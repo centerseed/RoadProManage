@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_ev_car"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:padding="12dp"
+        android:text="業者介紹"
+        android:textColor="@color/colorNavTitle"
+        android:textSize="17sp" />
+
+    <LinearLayout
+        android:id="@+id/car_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="車輛動態"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|right"
+            android:padding="8dp"
+            android:tint="@color/colorNavTitle"
+            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/car_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="車輛清單"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|right"
+            android:padding="8dp"
+            android:tint="@color/colorNavTitle"
+            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/car_maintain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="車輛養護"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|right"
+            android:padding="8dp"
+            android:tint="@color/colorNavTitle"
+            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/car_manage_report"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="電動車管理報表"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical|right"
+            android:padding="8dp"
+            android:tint="@color/colorNavTitle"
+            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
+    </LinearLayout>
+</LinearLayout>

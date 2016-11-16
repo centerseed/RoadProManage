@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RoadproManage</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title_time_format">yyyy/MM/dd HH:mm</string>
+    <string name="title_time_format_no_hour">yyyy/MM/dd</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

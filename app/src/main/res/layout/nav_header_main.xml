@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@color/colorPrimary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:text="Roadpro User"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="登出" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:id="@+id/ev_car_manage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightBlue"
+            android:button="@android:color/transparent"
+            android:padding="16dp"
+            android:text="電動車管理系統"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="18sp" />
+
+        <include
+            layout="@layout/list_ev_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/car_manage_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightBlue"
+            android:button="@android:color/transparent"
+            android:padding="16dp"
+            android:text="車輛管理系統"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="18sp" />
+
+        <include
+            layout="@layout/list_park"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:id="@+id/plug_manage_system"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightBlue"
+            android:button="@android:color/transparent"
+            android:padding="16dp"
+            android:text="充電樁管理系統"
+            android:textColor="@color/colorNavTitle"
+            android:textSize="18sp" />
+
+        <include
+            layout="@layout/list_plug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </RadioGroup>
+
+</LinearLayout>
