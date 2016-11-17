@@ -1,13 +1,25 @@
 package com.moana.roadpro_manage.ev_car;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.moana.roadpro_manage.base.BasePagerActivity;
+import com.moana.roadpro_manage.base.ConstantDef;
 
 
 public class CarInfoActivity extends BasePagerActivity {
+
+    String mCarNo;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mCarNo = getIntent().getStringExtra(ConstantDef.ARG_STRING);
+    }
+
     @Override
     public String getToolbarTitle() {
         return "車輛資訊";
@@ -28,9 +40,9 @@ public class CarInfoActivity extends BasePagerActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new CarBasicFragment();
+                    return CarBasicFragment.getInstance(mCarNo);
                 default:
-                    return new CarBasicFragment();
+                    return CarMaintainFragment.getInstance(mCarNo);
             }
         }
 
