@@ -17,6 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("../keystore.jks")
+            storePassword "123456-s"
+            keyAlias "bus"
+            keyPassword "123456-s"
+        }
+        release {
+            storeFile file("../keystore.jks")
+            storePassword "123456-s"
+            keyAlias "bus"
+            keyPassword "123456-s"
+        }
+    }
 }
 
 dependencies {
@@ -32,5 +47,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.mikhaellopez:circularprogressbar:1.1.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:cardview-v7:25.0.0'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     testCompile 'junit:junit:4.12'
 }

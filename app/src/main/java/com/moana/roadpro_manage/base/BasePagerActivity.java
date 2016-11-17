@@ -9,9 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.moana.roadpro_manage.R;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 
-public abstract class BasePagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public abstract class BasePagerActivity extends AppCompatActivity {
     protected ViewPager mViewPager;
 
     @Override
@@ -22,14 +23,15 @@ public abstract class BasePagerActivity extends AppCompatActivity implements Vie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getToolbarTitle());
 
         FragmentPagerAdapter sectionsPagerAdapter = getPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(sectionsPagerAdapter);
-        mViewPager.addOnPageChangeListener(this);
-        String title = getActivityTitle() + "(1/" + mViewPager.getAdapter().getCount() + ")";
-        getSupportActionBar().setTitle(title);
+
+        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
+        viewPagerTab.setViewPager(mViewPager);
     }
 
     @Override
@@ -42,31 +44,6 @@ public abstract class BasePagerActivity extends AppCompatActivity implements Vie
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        String title = getActivityTitle() + "(" + ++position + "/" + mViewPager.getAdapter().getCount() + ")";
-        getSupportActionBar().setTitle(title);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (mViewPager.getCurrentItem() == 0) {
-            finish();
-        } else {
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
-        }
-    }
-
+    public abstract String getToolbarTitle();
     protected abstract FragmentPagerAdapter getPagerAdapter(FragmentManager fm);
-
-    protected abstract String getActivityTitle();
 }

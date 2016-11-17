@@ -11,10 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyCd6baHmtZ7LtKFKGhJpqQrZmaSGRe2TAA" />
 
         <provider
             android:name=".RoadProProvider"
@@ -33,6 +32,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ev_car.CarInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TabActivity"
+            android:label="@string/title_activity_tab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
