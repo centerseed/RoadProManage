@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.moana.roadpro_manage.ev_car.EvCarFragment;
+import com.moana.roadpro_manage.ev_car.EvCarListFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -133,6 +134,9 @@ public class MainActivity extends AppCompatActivity
                     break;
                 case R.id.car_activity:
                     f = new EvCarFragment();
+                    break;
+                case R.id.car_list:
+                    f = new EvCarListFragment();
                     break;
             }
 

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
 
@@ -18,6 +19,7 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     protected SwipeRefreshLayout mSwipeRefresh;
     protected RecyclerView mRecycler;
     protected AbstractRecyclerCursorAdapter mAdapter;
+    protected TextView mTitle;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mTitle = (TextView) view.findViewById(R.id.title);
+        mTitle.setText(getTitle());
         mSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         mSwipeRefresh.setOnRefreshListener(this);
         mRecycler = (RecyclerView) view.findViewById(R.id.recycler);
@@ -66,6 +70,7 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     }
 
     abstract protected AbstractRecyclerCursorAdapter getAdapter();
+    protected abstract String getTitle();
 
     @Override
     public void onRefresh() {
