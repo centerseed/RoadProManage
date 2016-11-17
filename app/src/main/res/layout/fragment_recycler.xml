@@ -8,11 +8,11 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:padding="16dp"
         android:text="業者介紹"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
         android:textSize="18sp" />
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -24,7 +24,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:background="@color/colorLightBlue"></android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

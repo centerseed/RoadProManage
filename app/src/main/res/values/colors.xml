@@ -6,6 +6,7 @@
 
     <color name="colorLightBlue">#e8ebfa</color>
     <color name="colorLightGrey">#AAAAAA</color>
+    <color name="colorMaintainGrey">#DDDDDD</color>
     <color name="colorNavTitle">#737373</color>
     <color name="colorSubTitle">#c7b06f</color>
     <color name="colorYellow">#fad82f</color>

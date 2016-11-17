@@ -8,9 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.moana.roadpro_manage.base.BasePagerActivity;
 import com.moana.roadpro_manage.base.ConstantDef;
 
-
-public class CarInfoActivity extends BasePagerActivity {
-
+public class CarCuringActivity extends BasePagerActivity {
     String mCarNo;
 
     @Override
@@ -21,7 +19,7 @@ public class CarInfoActivity extends BasePagerActivity {
 
     @Override
     public String getToolbarTitle() {
-        return "車輛資訊";
+        return "車輛養護";
     }
 
     @Override
@@ -47,16 +45,18 @@ public class CarInfoActivity extends BasePagerActivity {
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "基本資料";
+                    return "車輛維修";
                 case 1:
-                    return "維修紀錄";
+                    return "車輛保養";
+                case 2:
+                    return "車輛清潔";
             }
             return "";
         }

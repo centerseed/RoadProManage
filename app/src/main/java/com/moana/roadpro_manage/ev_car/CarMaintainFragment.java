@@ -1,18 +1,31 @@
 package com.moana.roadpro_manage.ev_car;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.RecyclerFragment;
+import com.moana.roadpro_manage.dummy.DummyMaintainSource;
+
+import java.util.ArrayList;
 
 public class CarMaintainFragment extends RecyclerFragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_recycler, container, false);
+    }
 
     public static CarMaintainFragment getInstance(String carNo) {
         Bundle bundle = new Bundle();
@@ -21,6 +34,18 @@ public class CarMaintainFragment extends RecyclerFragment {
         CarMaintainFragment f = new CarMaintainFragment();
         f.setArguments(bundle);
         return f;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
+
+        ArrayList<ContentValues> values = DummyMaintainSource.getMaintainData();
+        for (ContentValues v : values) {
+            getContext().getContentResolver().insert(mUri, v);
+        }
+        getContext().getContentResolver().notifyChange(mUri, null);
     }
 
     @Override

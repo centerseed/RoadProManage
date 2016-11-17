@@ -8,19 +8,29 @@ import com.moana.roadpro_manage.RoadProProvider;
 import java.util.ArrayList;
 
 public class DummyMaintainSource {
-    public static ArrayList<ContentValues> getCarData() {
+    public static ArrayList<ContentValues> getMaintainData() {
         ArrayList<ContentValues> values = new ArrayList<>();
-
-        ContentValues value = new ContentValues();
         String carNO = "1111-00";
 
-        value.put(RoadProProvider.FIELD_ID, carNO.hashCode());
-        value.put(RoadProProvider.FIELD_CAR_ADDRESS, "台中市五權路一段");
-        value.put(RoadProProvider.FIELD_CAR_BATTERY_TEMP, "50");
-        value.put(RoadProProvider.FIELD_CAR_DRIVER_NAME, "王大明");
-        value.put(RoadProProvider.FIELD_CAR_COLOR, "白色");
-        value.put(RoadProProvider.FIELD_CAR_FACTORY_YEAR, "2016/5");
-        value.put(RoadProProvider.FIELD_CAR_FUEL_TYPE, "電動車");
+        ContentValues value = new ContentValues();
+        value.put(RoadProProvider.FIELD_ID, "maintain1".hashCode());
+        value.put(RoadProProvider.FIELD_CAR_NO, carNO);
+        value.put(RoadProProvider.FIELD_CAR_MAINTAIN_DATE, "2016/4/2");
+        value.put(RoadProProvider.FIELD_MAINTAIN_ITEM, "故障維修");
+        value.put(RoadProProvider.FIELD_MAINTAIN_ITEM_DETAIL, "更換空壓機");
+        value.put(RoadProProvider.FIELD_MAINTAIN_REASON, "空壓氣漏油");
+        value.put(RoadProProvider.FIELD_MAINTAIN_MILEAGE, "4123");
+
+        values.add(value);
+
+        value = new ContentValues();
+        value.put(RoadProProvider.FIELD_ID, "maintain2".hashCode());
+        value.put(RoadProProvider.FIELD_CAR_NO, carNO);
+        value.put(RoadProProvider.FIELD_CAR_MAINTAIN_DATE, "2016/5/10");
+        value.put(RoadProProvider.FIELD_MAINTAIN_ITEM, "例行保養");
+        value.put(RoadProProvider.FIELD_MAINTAIN_ITEM_DETAIL, "更換輪胎");
+        value.put(RoadProProvider.FIELD_MAINTAIN_REASON, "二級保養");
+        value.put(RoadProProvider.FIELD_MAINTAIN_MILEAGE, "4123");
 
         values.add(value);
         return values;

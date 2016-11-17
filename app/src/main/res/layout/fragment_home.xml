@@ -1,22 +1,67 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/side_home_background"
     tools:context="com.moana.roadpro_manage.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/side_home_background">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             app:srcCompat="@mipmap/logo_w_title" />
+
+        <ImageView
+            android:id="@+id/ev_car"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@mipmap/btn_index_s1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="電動車管理系統"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/park"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@mipmap/btn_index_s2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="車輛管理系統"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/plug"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@mipmap/btn_index_s3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:text="充電樁管理系統"
+            android:textSize="20sp" />
     </LinearLayout>
 
-</FrameLayout>
+</ScrollView>
