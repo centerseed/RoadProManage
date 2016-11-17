@@ -19,6 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.moana.roadpro_manage.ev_car.EvCarFragment;
+import com.moana.roadpro_manage.ev_car.IntroduceFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -118,9 +121,24 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public void onClick(View view) {
-
             mToolbarIcon.setVisibility(View.VISIBLE);
             Log.e("Drawer Click", "view id -> " + view.getId());
+
+            Fragment f = null;
+
+            switch (view.getId()) {
+                // Layer 2
+                case R.id.introduce:
+                    f = new IntroduceFragment();
+                    break;
+                case R.id.car_activity:
+                    f = new EvCarFragment();
+                    break;
+            }
+
+            if (f != null) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, f).commit();
+            }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
@@ -135,6 +153,7 @@ public class MainActivity extends AppCompatActivity
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 collapseAllList();
                 switch (i) {
+                    // Layer 1
                     case R.id.ev_car_manage:
                         mListEvCar.setVisibility(View.VISIBLE);
                         break;
@@ -144,6 +163,9 @@ public class MainActivity extends AppCompatActivity
                     case R.id.plug_manage_system:
                         mListPlug.setVisibility(View.VISIBLE);
                         break;
+                    // Layer 2
+
+                    // Layer 3
                 }
             }
         });
