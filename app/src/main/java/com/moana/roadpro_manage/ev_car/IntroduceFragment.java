@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.ContentFragment;
+import com.moana.roadpro_manage.base.ContentMapFragment;
 import com.moana.roadpro_manage.map.MapsFragment;
 
 public class IntroduceFragment extends ContentFragment {
@@ -25,7 +26,7 @@ public class IntroduceFragment extends ContentFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Fragment f = new MapsFragment();
+        Fragment f = new ContentMapFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
     }
 

@@ -2,6 +2,8 @@ package com.moana.roadpro_manage.park;
 
 import android.content.ContentValues;
 import android.net.Uri;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
@@ -15,7 +17,13 @@ import java.util.ArrayList;
 public class ParkListFragment extends RecyclerFragment {
     @Override
     protected AbstractRecyclerCursorAdapter getAdapter() {
-        return new CarAdapter(getContext(), null);
+        return new ParkAdapter(getContext(), null);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_parklist, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override

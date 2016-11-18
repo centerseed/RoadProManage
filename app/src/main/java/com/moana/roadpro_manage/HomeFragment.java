@@ -47,7 +47,7 @@ public class HomeFragment extends ActionBarFragment implements OnMapReadyCallbac
         mPlug.setOnClickListener(listener);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+       // mapFragment.getMapAsync(this);
     }
 
     @Override
