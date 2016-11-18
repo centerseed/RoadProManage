@@ -62,11 +62,6 @@ public class CarMaintainFragment extends RecyclerFragment {
     }
 
     @Override
-    protected String getTitle() {
-        return null;
-    }
-
-    @Override
     protected void onSync() {
         enableRefresh(false);
     }
@@ -78,5 +73,10 @@ public class CarMaintainFragment extends RecyclerFragment {
 
     private String getCarNo() {
         return getArguments().getString(ConstantDef.ARG_STRING);
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return null;
     }
 }

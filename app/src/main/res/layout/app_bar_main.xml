@@ -5,27 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/side_home_background"
     tools:context="com.moana.roadpro_manage.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@android:color/transparent"
         app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/transparent"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:gravity="center">
-            <ImageView
-                android:id="@+id/toolbar_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                app:srcCompat="@mipmap/logo" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

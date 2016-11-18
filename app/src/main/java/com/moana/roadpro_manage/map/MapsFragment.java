@@ -57,6 +57,11 @@ public class MapsFragment extends ContentFragment implements OnMapReadyCallback,
     }
 
     @Override
+    protected String getActionBarTitle() {
+        return null;
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 

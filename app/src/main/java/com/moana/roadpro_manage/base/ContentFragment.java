@@ -9,7 +9,7 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.View;
 
-public abstract class ContentFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public abstract class ContentFragment extends ActionBarFragment implements LoaderManager.LoaderCallbacks<Cursor> {
     protected Uri mUri;
 
     @Override

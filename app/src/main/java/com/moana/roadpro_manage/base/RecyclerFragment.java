@@ -30,11 +30,6 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTitle = (TextView) view.findViewById(R.id.title);
-        String title = getTitle();
-        if (title == null) hideTitle();
-        else
-            mTitle.setText(title);
         mSwipeRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         mSwipeRefresh.setOnRefreshListener(this);
         mRecycler = (RecyclerView) view.findViewById(R.id.recycler);
@@ -73,8 +68,6 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     }
 
     abstract protected AbstractRecyclerCursorAdapter getAdapter();
-
-    protected abstract String getTitle();
 
     protected void hideTitle() {
         mTitle.setVisibility(View.GONE);

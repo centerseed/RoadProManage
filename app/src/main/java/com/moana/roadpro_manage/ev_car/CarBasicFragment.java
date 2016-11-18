@@ -64,4 +64,9 @@ public class CarBasicFragment extends ContentFragment {
     private String getCarNo() {
         return getArguments().getString(ConstantDef.ARG_STRING);
     }
+
+    @Override
+    protected String getActionBarTitle() {
+        return null;
+    }
 }

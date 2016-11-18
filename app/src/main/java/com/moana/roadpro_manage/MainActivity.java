@@ -1,26 +1,28 @@
 package com.moana.roadpro_manage;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
-import com.moana.roadpro_manage.ev_car.EvCarFragment;
 import com.moana.roadpro_manage.ev_car.EvCarListFragment;
+import com.moana.roadpro_manage.ev_car.EvCarStatusFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
+import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mItemPlugManage;
     LinearLayout mItemPlugReport;
     Toolbar mToolbar;
-    ImageView mToolbarIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,29 +51,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("");
 
-        mToolbarIcon = (ImageView) mToolbar.findViewById(R.id.toolbar_icon);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        mToolbar.setNavigationIcon(R.mipmap.ic_menu_black_24dp);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         initDrawerHeader(navigationView);
 
         Fragment f = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, f).commit();
-        mToolbarIcon.setVisibility(View.GONE);
-
-        mToolbarIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment f = new HomeFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, f).commit();
-                mToolbarIcon.setVisibility(View.GONE);
-            }
-        });
     }
 
     @Override
@@ -112,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            mToolbarIcon.setVisibility(View.VISIBLE);
             Log.e("Drawer Click", "view id -> " + view.getId());
+            mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            mToolbar.setNavigationIcon(R.mipmap.ic_menu_white_24dp);
 
             Fragment f = null;
 
@@ -123,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     f = new IntroduceFragment();
                     break;
                 case R.id.car_activity:
-                    f = new EvCarFragment();
+                    f = new EvCarStatusFragment();
                     break;
                 case R.id.car_list:
                     f = new EvCarListFragment();

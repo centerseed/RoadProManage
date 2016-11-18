@@ -30,6 +30,11 @@ public class IntroduceFragment extends ContentFragment {
     }
 
     @Override
+    protected String getActionBarTitle() {
+        return "業者介紹";
+    }
+
+    @Override
     protected Uri getProviderUri() {
         return null;
     }

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/side_home_background"
     tools:context="com.moana.roadpro_manage.HomeFragment">
 
     <LinearLayout
@@ -15,7 +14,8 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             app:srcCompat="@mipmap/logo_w_title" />
 
         <ImageView

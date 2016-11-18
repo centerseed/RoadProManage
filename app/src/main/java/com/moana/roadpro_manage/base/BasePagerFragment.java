@@ -15,7 +15,7 @@ import com.moana.roadpro_manage.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 
-public abstract class BasePagerFragment extends Fragment {
+public abstract class BasePagerFragment extends ActionBarFragment {
     protected ViewPager mViewPager;
     SmartTabLayout viewPagerTab;
 
@@ -42,8 +42,6 @@ public abstract class BasePagerFragment extends Fragment {
         sectionsPagerAdapter.notifyDataSetChanged();
 
     }
-
-    protected abstract String getToolbarTitle();
 
     protected abstract FragmentPagerAdapter getPagerAdapter(FragmentManager fm);
 }

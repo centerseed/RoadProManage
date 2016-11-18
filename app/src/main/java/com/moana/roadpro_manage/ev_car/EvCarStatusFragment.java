@@ -14,7 +14,7 @@ import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.ContentFragment;
 import com.moana.roadpro_manage.map.MapsFragment;
 
-public class EvCarFragment extends ContentFragment {
+public class EvCarStatusFragment extends ContentFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,6 +27,11 @@ public class EvCarFragment extends ContentFragment {
 
         Fragment f = new MapsFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, f).commit();
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return "車輛動態";
     }
 
     @Override

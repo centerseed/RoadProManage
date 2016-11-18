@@ -18,11 +18,6 @@ public class EvCarListFragment extends RecyclerFragment {
     }
 
     @Override
-    protected String getTitle() {
-        return "車輛清單";
-    }
-
-    @Override
     protected void onSync() {
         // Skip parser
         getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
@@ -38,5 +33,10 @@ public class EvCarListFragment extends RecyclerFragment {
     @Override
     protected Uri getProviderUri() {
         return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return "車輛清單";
     }
 }

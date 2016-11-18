@@ -10,13 +10,13 @@ import com.moana.roadpro_manage.ev_car.CarBasicFragment;
 public class CarReportFragment extends BasePagerFragment {
 
     @Override
-    public String getToolbarTitle() {
-        return "管理報表";
+    protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
+        return new SectionsPagerAdapter(fm);
     }
 
     @Override
-    protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
-        return new SectionsPagerAdapter(fm);
+    protected String getActionBarTitle() {
+        return "管理報表";
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -33,7 +33,7 @@ public class CarReportFragment extends BasePagerFragment {
                 case 1:
                     return new ProperRateFragment();
                 default:
-                    return CarBasicFragment.getInstance("123");
+                    return new ProperRateFragment();
             }
         }
 
