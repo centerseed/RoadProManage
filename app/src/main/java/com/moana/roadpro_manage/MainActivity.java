@@ -57,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 this, drawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        mToolbar.setNavigationIcon(R.mipmap.ic_menu_black_24dp);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         initDrawerHeader(navigationView);
 
+        mToolbar.setNavigationIcon(R.mipmap.ic_menu_black_24dp);
         Fragment f = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, f).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, f, "home").commit();
     }
 
     @Override
@@ -72,7 +72,15 @@ public class MainActivity extends AppCompatActivity {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if (getSupportFragmentManager().findFragmentByTag("home") != null)
             super.onBackPressed();
+            else {
+                mToolbar.setNavigationIcon(R.mipmap.ic_menu_black_24dp);
+                mToolbar.setBackgroundColor(Color.TRANSPARENT);
+                mToolbar.setTitle("");
+                Fragment f = new HomeFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, f, "home").commit();
+            }
         }
     }
 
