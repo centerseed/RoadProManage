@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBlue"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.moana.roadpro_manage.ev_car.ProperRateFragment">
+
+    <include layout="@layout/header_selector" />
+
+    <include
+        layout="@layout/fragment_line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></include>
+
+
+</LinearLayout>

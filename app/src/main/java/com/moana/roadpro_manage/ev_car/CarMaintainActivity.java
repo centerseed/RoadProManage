@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.moana.roadpro_manage.base.BasePagerActivity;
 import com.moana.roadpro_manage.base.ConstantDef;
 
-public class CarReportActivity extends BasePagerActivity {
+public class CarMaintainActivity extends BasePagerActivity {
     String mCarNo;
 
     @Override

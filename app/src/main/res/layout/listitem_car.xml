@@ -35,13 +35,15 @@
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/rect_car_no" />
+                app:srcCompat="@drawable/rect_car_no"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:layout_width="wrap_content"

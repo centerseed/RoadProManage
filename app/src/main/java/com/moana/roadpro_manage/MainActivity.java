@@ -19,12 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.moana.roadpro_manage.ev_car.CarReportFragment;
 import com.moana.roadpro_manage.ev_car.EvCarFragment;
 import com.moana.roadpro_manage.ev_car.EvCarListFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     LinearLayout mListEvCar;
     LinearLayout mListCar;
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
         initDrawerHeader(navigationView);
 
         Fragment f = new HomeFragment();
@@ -105,13 +104,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-
-        return true;
-    }
-
     private void collapseAllList() {
         mListEvCar.setVisibility(View.GONE);
         mListCar.setVisibility(View.GONE);
@@ -137,6 +129,9 @@ public class MainActivity extends AppCompatActivity
                     break;
                 case R.id.car_list:
                     f = new EvCarListFragment();
+                    break;
+                case R.id.car_manage_report:
+                    f = new CarReportFragment();
                     break;
             }
 
