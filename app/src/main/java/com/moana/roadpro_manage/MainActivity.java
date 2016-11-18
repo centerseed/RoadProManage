@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                collapseAllList();
+              //  collapseAllList();
                 switch (i) {
                     // Layer 1
                     case R.id.ev_car_manage:

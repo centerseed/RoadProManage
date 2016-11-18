@@ -51,6 +51,7 @@ public abstract class PieChartFragment extends Fragment {
         mChart.setRotationAngle(310);
         mChart.setHoleColor(Color.TRANSPARENT);
         mChart.setHoleRadius(90f);
+        mChart.setRotationEnabled(false);
 
         Legend l = mChart.getLegend();
         l.setEnabled(false);

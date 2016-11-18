@@ -52,8 +52,7 @@
         <include
             layout="@layout/list_ev_car"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/car_manage_system"
@@ -69,8 +68,7 @@
         <include
             layout="@layout/list_park"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/plug_manage_system"
@@ -86,8 +84,7 @@
         <include
             layout="@layout/list_plug"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:layout_height="wrap_content" />
     </RadioGroup>
 
 </LinearLayout>
