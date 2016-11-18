@@ -1,6 +1,7 @@
 package com.moana.roadpro_manage;
 
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.moana.roadpro_manage.base.ActionBarFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends ActionBarFragment {
 
     ImageView mEvCar;
     ImageView mPark;
@@ -41,11 +43,19 @@ public class HomeFragment extends Fragment {
         mPlug.setOnClickListener(listener);
     }
 
+    @Override
+    protected String getActionBarTitle() {
+        return null;
+    }
+
     class OnFuncClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
             Fragment f = null;
+            mToolbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
+            mToolbar.setHomeAsUpIndicator(R.mipmap.ic_menu_white_24dp);
+            mToolbar.setDisplayHomeAsUpEnabled(true);
             switch (view.getId()) {
                 case R.id.ev_car:
                     f = new IntroduceFragment();
