@@ -14,8 +14,8 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
             app:srcCompat="@mipmap/logo_w_title" />
 
         <ImageView
@@ -62,6 +62,10 @@
             android:layout_marginBottom="8dp"
             android:text="充電樁管理系統"
             android:textSize="20sp" />
+
+        <include
+            layout="@layout/fragment_maps"
+            android:visibility="gone" />
     </LinearLayout>
 
 </ScrollView>
