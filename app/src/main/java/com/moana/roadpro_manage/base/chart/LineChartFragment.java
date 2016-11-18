@@ -19,7 +19,7 @@ import com.moana.roadpro_manage.R;
 
 import java.util.ArrayList;
 
-public abstract class LineChartFragment extends Fragment {
+public class LineChartFragment extends Fragment {
 
     LineChart mChart;
     ArrayList<ILineDataSet> mDataSet;
@@ -77,7 +77,6 @@ public abstract class LineChartFragment extends Fragment {
 
         LineData data = new LineData(mDataSet);
         mChart.setData(data);
-        mChart.notifyDataSetChanged();
         mChart.notifyDataSetChanged();
         mChart.invalidate();
     }

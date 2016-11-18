@@ -1,13 +1,11 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.ev_car.report;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.moana.roadpro_manage.base.BasePagerActivity;
 import com.moana.roadpro_manage.base.BasePagerFragment;
-import com.moana.roadpro_manage.base.ConstantDef;
+import com.moana.roadpro_manage.ev_car.CarBasicFragment;
 
 public class CarReportFragment extends BasePagerFragment {
 
@@ -31,6 +29,8 @@ public class CarReportFragment extends BasePagerFragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
+                    return new RepairRecordFragment();
+                case 1:
                     return new ProperRateFragment();
                 default:
                     return CarBasicFragment.getInstance("123");
@@ -46,9 +46,9 @@ public class CarReportFragment extends BasePagerFragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "營運妥善率";
-                case 1:
                     return "故障紀錄";
+                case 1:
+                    return "營運妥善率";
                 case 2:
                     return "用電效率";
             }

@@ -1,8 +1,6 @@
 package com.moana.roadpro_manage;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.moana.roadpro_manage.ev_car.CarReportFragment;
+import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
 import com.moana.roadpro_manage.ev_car.EvCarFragment;
 import com.moana.roadpro_manage.ev_car.EvCarListFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
