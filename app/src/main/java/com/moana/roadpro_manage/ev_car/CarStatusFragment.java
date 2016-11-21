@@ -15,7 +15,7 @@ import com.moana.roadpro_manage.base.ContentFragment;
 import com.moana.roadpro_manage.base.ContentMapFragment;
 import com.moana.roadpro_manage.map.MapsFragment;
 
-public class EvCarStatusFragment extends ContentFragment {
+public class CarStatusFragment extends ContentFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

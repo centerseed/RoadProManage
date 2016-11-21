@@ -64,7 +64,7 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
 
     public void enableRefresh(boolean enable) {
         if (mSwipeRefresh != null)
-            mSwipeRefresh.setEnabled(enable);
+            mSwipeRefresh.setRefreshing(enable);
     }
 
     abstract protected AbstractRecyclerCursorAdapter getAdapter();

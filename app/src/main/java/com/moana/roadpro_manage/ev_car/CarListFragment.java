@@ -11,7 +11,7 @@ import com.moana.roadpro_manage.dummy.DummyCarSource;
 
 import java.util.ArrayList;
 
-public class EvCarListFragment extends RecyclerFragment {
+public class CarListFragment extends RecyclerFragment {
     @Override
     protected AbstractRecyclerCursorAdapter getAdapter() {
         return new CarAdapter(getContext(), null);
@@ -20,14 +20,19 @@ public class EvCarListFragment extends RecyclerFragment {
     @Override
     protected void onSync() {
         // Skip parser
-        getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
+        mRecycler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
 
-        ArrayList<ContentValues> values = DummyCarSource.getCarData();
-        for (ContentValues v : values)
-            getContext().getContentResolver().insert(mUri, v);
+                ArrayList<ContentValues> values = DummyCarSource.getCarData();
+                for (ContentValues v : values)
+                    getContext().getContentResolver().insert(mUri, v);
 
-        getContext().getContentResolver().notifyChange(mUri, null);
-        enableRefresh(false);
+                getContext().getContentResolver().notifyChange(mUri, null);
+                enableRefresh(false);
+            }
+        }, 1000);
     }
 
     @Override

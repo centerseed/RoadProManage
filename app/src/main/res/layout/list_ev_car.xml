@@ -70,14 +70,6 @@
             android:text="車輛養護"
             android:textColor="@color/colorNavTitle"
             android:textSize="17sp" />
-
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_gravity="center_vertical|right"
-            android:padding="8dp"
-            android:tint="@color/colorNavTitle"
-            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -96,13 +88,5 @@
             android:text="電動車管理報表"
             android:textColor="@color/colorNavTitle"
             android:textSize="17sp" />
-
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_gravity="center_vertical|right"
-            android:padding="8dp"
-            android:tint="@color/colorNavTitle"
-            app:srcCompat="@mipmap/ic_play_arrow_white_24dp" />
     </LinearLayout>
 </LinearLayout>

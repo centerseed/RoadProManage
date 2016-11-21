@@ -3,7 +3,10 @@ package com.moana.roadpro_manage.ev_car.report;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.Menu;
+import android.view.MenuInflater;
 
+import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.BasePagerFragment;
 import com.moana.roadpro_manage.ev_car.CarBasicFragment;
 
@@ -12,6 +15,12 @@ public class CarReportFragment extends BasePagerFragment {
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
         return new SectionsPagerAdapter(fm);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_report, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.moana.roadpro_manage;
 
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -20,8 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.moana.roadpro_manage.curing.CuringFragment;
-import com.moana.roadpro_manage.ev_car.EvCarListFragment;
-import com.moana.roadpro_manage.ev_car.EvCarStatusFragment;
+import com.moana.roadpro_manage.ev_car.CarListFragment;
+import com.moana.roadpro_manage.ev_car.CarStatusFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
@@ -124,10 +122,10 @@ public class MainActivity extends AppCompatActivity {
                     f = new IntroduceFragment();
                     break;
                 case R.id.car_activity:
-                    f = new EvCarStatusFragment();
+                    f = new CarStatusFragment();
                     break;
                 case R.id.car_list:
-                    f = new EvCarListFragment();
+                    f = new CarListFragment();
                     break;
                 case R.id.car_curing:
                     f = new CuringFragment();

@@ -15,7 +15,13 @@ public class CuringRepairFragment extends RecyclerFragment {
 
     @Override
     protected void onSync() {
-        enableRefresh(false);
+        mRecycler.postDelayed(new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                enableRefresh(false);
+            }
+        }), 500);
     }
 
     @Override
