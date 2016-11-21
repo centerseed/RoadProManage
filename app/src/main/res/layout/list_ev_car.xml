@@ -55,7 +55,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/car_maintain"
+        android:id="@+id/car_curing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"

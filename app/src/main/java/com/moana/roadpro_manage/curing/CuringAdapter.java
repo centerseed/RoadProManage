@@ -1,7 +1,6 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.curing;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,8 +10,8 @@ import android.widget.TextView;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 
-public class CarMaintainAdapter extends AbstractRecyclerCursorAdapter {
-    public CarMaintainAdapter(Context context, Cursor c) {
+public class CuringAdapter extends AbstractRecyclerCursorAdapter {
+    public CuringAdapter(Context context, Cursor c) {
         super(context, c);
     }
 
@@ -23,8 +22,8 @@ public class CarMaintainAdapter extends AbstractRecyclerCursorAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = m_inflater.inflate(R.layout.listitem_maintain, parent, false);
-        return new CarMaintainAdapter.CarViewHolder(v);
+        View v = m_inflater.inflate(R.layout.listitem_curing, parent, false);
+        return new CarViewHolder(v);
     }
 
     public class CarViewHolder extends RecyclerView.ViewHolder {

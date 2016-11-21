@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.moana.roadpro_manage.curing.CuringFragment;
 import com.moana.roadpro_manage.ev_car.EvCarListFragment;
 import com.moana.roadpro_manage.ev_car.EvCarStatusFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
@@ -128,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.car_list:
                     f = new EvCarListFragment();
                     break;
+                case R.id.car_curing:
+                    f = new CuringFragment();
+                    break;
                 case R.id.car_manage_report:
                     f = new CarReportFragment();
                     break;
@@ -180,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         mItemIntroduce = (TextView) headerView.findViewById(R.id.introduce);
         mItemCarActivity = (LinearLayout) headerView.findViewById(R.id.car_activity);
         mItemCarList = (LinearLayout) headerView.findViewById(R.id.car_list);
-        mItemCarMaintain = (LinearLayout) headerView.findViewById(R.id.car_maintain);
+        mItemCarMaintain = (LinearLayout) headerView.findViewById(R.id.car_curing);
         mItemCarManageReport = (LinearLayout) headerView.findViewById(R.id.car_manage_report);
         mItemParkSearch = (LinearLayout) headerView.findViewById(R.id.park_search);
         mItemParkManage = (LinearLayout) headerView.findViewById(R.id.park_manage);

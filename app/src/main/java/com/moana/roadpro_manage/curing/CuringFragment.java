@@ -1,29 +1,14 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.curing;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.moana.roadpro_manage.base.BasePagerActivity;
-import com.moana.roadpro_manage.base.ConstantDef;
+import com.moana.roadpro_manage.base.BasePagerFragment;
+import com.moana.roadpro_manage.ev_car.CarBasicFragment;
+import com.moana.roadpro_manage.park.ParkMapFragment;
 
-
-public class CarInfoActivity extends BasePagerActivity {
-
-    String mCarNo;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mCarNo = getIntent().getStringExtra(ConstantDef.ARG_STRING);
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "車輛資訊";
-    }
-
+public class CuringFragment extends BasePagerFragment {
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
         return new SectionsPagerAdapter(fm);
@@ -39,9 +24,9 @@ public class CarInfoActivity extends BasePagerActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return CarBasicFragment.getInstance(mCarNo);
+                    return new CuringRepairFragment();
                 default:
-                    return CarMaintainFragment.getInstance(mCarNo);
+                    return new CuringRepairFragment();
             }
         }
 
@@ -54,13 +39,18 @@ public class CarInfoActivity extends BasePagerActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "基本資料";
+                    return "車輛維修";
                 case 1:
-                    return "維修紀錄";
+                    return "車輛保養";
                 case 2:
-                    return "保養紀錄";
+                    return "車輛清潔";
             }
             return "";
         }
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return "車輛養護";
     }
 }

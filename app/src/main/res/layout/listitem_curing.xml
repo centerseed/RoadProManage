@@ -28,6 +28,27 @@
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/rect_car_no"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="111-00"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1.3">
 
             <ImageView
@@ -68,17 +89,6 @@
             </LinearLayout>
         </FrameLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:text="故障維修"
-            android:textAlignment="center"
-            android:textColor="@color/colorTextBlack"
-            android:visibility="invisible"
-            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
