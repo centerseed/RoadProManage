@@ -39,10 +39,8 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
                 @Override
                 public void onClick(View view) {
                     Cursor cursor = (Cursor) getItem(getAdapterPosition());
-                    String carNo = cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_NO));
 
-                    Intent intent = new Intent(m_context, CarInfoActivity.class);
-                    intent.putExtra(ConstantDef.ARG_STRING, carNo);
+                    Intent intent = new Intent(m_context, ParkInfoActivity.class);
                     m_context.startActivity(intent);
                 }
             });
