@@ -15,9 +15,9 @@ import com.moana.roadpro_manage.R;
 import java.util.ArrayList;
 
 public class BarChartFragment extends Fragment {
-    BarChart mChart;
-    int ColorArray[];
-    ArrayList<IBarDataSet> mDataSet;
+    protected BarChart mChart;
+    protected int ColorArray[];
+    protected ArrayList<IBarDataSet> mDataSet;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -57,7 +57,6 @@ public class BarChartFragment extends Fragment {
 
         BarData data = new BarData(mDataSet);
         mChart.setData(data);
-        mChart.notifyDataSetChanged();
         mChart.notifyDataSetChanged();
         mChart.invalidate();
     }

@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class LineChartFragment extends Fragment {
 
-    LineChart mChart;
-    ArrayList<ILineDataSet> mDataSet;
+    protected LineChart mChart;
+    protected ArrayList<ILineDataSet> mDataSet;
 
     int ColorArray[];
 
@@ -47,6 +47,8 @@ public class LineChartFragment extends Fragment {
         mChart.setDragEnabled(true);
         mChart.setScaleEnabled(true);
         mChart.setPinchZoom(true);
+
+        mChart.animateX(1500);
 
         setXAxis();
         setYAxis();

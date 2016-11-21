@@ -1,24 +1,16 @@
-package com.moana.roadpro_manage.curing;
+package com.moana.roadpro_manage.park;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.Menu;
-import android.view.MenuInflater;
 
-import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.BasePagerFragment;
+import com.moana.roadpro_manage.curing.CuringRepairFragment;
 
-public class CuringFragment extends BasePagerFragment {
+public class ParkReportFragment extends BasePagerFragment {
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
         return new SectionsPagerAdapter(fm);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_order, menu);
-        super.onCreateOptionsMenu(menu,inflater);
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -31,9 +23,11 @@ public class CuringFragment extends BasePagerFragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new CuringRepairFragment();
+                    return new RentCountListFragment();
+                case 1:
+                    return new TurnoverFragment();
                 default:
-                    return new CuringRepairFragment();
+                    return new UseCountChartFragment();
             }
         }
 
@@ -46,11 +40,11 @@ public class CuringFragment extends BasePagerFragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "車輛維修";
+                    return "租借數量";
                 case 1:
-                    return "車輛保養";
+                    return "週轉率";
                 case 2:
-                    return "車輛清潔";
+                    return "使用車次";
             }
             return "";
         }
@@ -58,6 +52,6 @@ public class CuringFragment extends BasePagerFragment {
 
     @Override
     protected String getActionBarTitle() {
-        return "車輛養護";
+        return "停車場報表";
     }
 }

@@ -23,6 +23,7 @@ import com.moana.roadpro_manage.ev_car.CarStatusFragment;
 import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
+import com.moana.roadpro_manage.park.ParkReportFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -135,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.park_search:
                     f = new ParkFragment();
+                    break;
+                case R.id.park_report:
+                    f = new ParkReportFragment();
                     break;
             }
 
