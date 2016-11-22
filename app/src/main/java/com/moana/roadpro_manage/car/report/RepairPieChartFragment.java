@@ -1,4 +1,4 @@
-package com.moana.roadpro_manage.ev_car.report;
+package com.moana.roadpro_manage.car.report;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,6 @@ import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.chart.PieChartFragment;
 
 import java.util.ArrayList;
-
-import static android.R.attr.data;
 
 
 public class RepairPieChartFragment extends PieChartFragment {

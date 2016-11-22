@@ -1,12 +1,10 @@
-package com.moana.roadpro_manage.ev_car.report;
+package com.moana.roadpro_manage.car.report;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.data.Entry;
 import com.moana.roadpro_manage.R;

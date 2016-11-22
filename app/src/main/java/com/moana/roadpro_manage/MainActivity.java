@@ -15,12 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.moana.roadpro_manage.curing.CuringFragment;
-import com.moana.roadpro_manage.ev_car.CarListFragment;
-import com.moana.roadpro_manage.ev_car.CarStatusFragment;
-import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
+import com.moana.roadpro_manage.car.CarListFragment;
+import com.moana.roadpro_manage.car.CarStatusFragment;
+import com.moana.roadpro_manage.car.report.CarReportFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
 import com.moana.roadpro_manage.park.ParkReportFragment;
 

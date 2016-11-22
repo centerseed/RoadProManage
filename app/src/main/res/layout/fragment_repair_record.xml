@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.moana.roadpro_manage.ev_car.report.RepairRecordFragment">
+    tools:context="com.moana.roadpro_manage.car.report.RepairRecordFragment">
 
     <FrameLayout
         android:id="@+id/container_pie"

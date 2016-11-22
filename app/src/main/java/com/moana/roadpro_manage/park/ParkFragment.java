@@ -8,8 +8,6 @@ import android.view.MenuInflater;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.BasePagerFragment;
-import com.moana.roadpro_manage.ev_car.report.ProperRateFragment;
-import com.moana.roadpro_manage.ev_car.report.RepairRecordFragment;
 
 public class ParkFragment extends BasePagerFragment {
 

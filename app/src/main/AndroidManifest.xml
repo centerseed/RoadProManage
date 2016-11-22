@@ -34,10 +34,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ev_car.CarInfoActivity"
+            android:name=".car.CarInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ev_car.CarCuringActivity"
+            android:name=".car.CarCuringActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".park.ParkInfoActivity"></activity>
     </application>

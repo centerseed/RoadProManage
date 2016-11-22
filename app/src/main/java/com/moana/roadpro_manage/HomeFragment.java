@@ -13,7 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.moana.roadpro_manage.base.ActionBarFragment;
-import com.moana.roadpro_manage.ev_car.CarStatusFragment;
+import com.moana.roadpro_manage.car.CarStatusFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
 
 public class HomeFragment extends ActionBarFragment implements OnMapReadyCallback {

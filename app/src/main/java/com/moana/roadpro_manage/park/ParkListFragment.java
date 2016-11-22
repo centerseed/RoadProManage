@@ -10,7 +10,6 @@ import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.RecyclerFragment;
 import com.moana.roadpro_manage.dummy.DummyCarSource;
-import com.moana.roadpro_manage.ev_car.CarAdapter;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.moana.roadpro_manage.ev_car.report;
+package com.moana.roadpro_manage.car.report;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.BasePagerFragment;
-import com.moana.roadpro_manage.ev_car.CarBasicFragment;
 
 public class CarReportFragment extends BasePagerFragment {
 

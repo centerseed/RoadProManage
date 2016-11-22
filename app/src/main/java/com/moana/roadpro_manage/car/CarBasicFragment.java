@@ -1,12 +1,9 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.car;
 
 
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;

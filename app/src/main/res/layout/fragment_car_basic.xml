@@ -10,7 +10,7 @@
         android:background="@color/colorLightBlue"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context="com.moana.roadpro_manage.ev_car.CarBasicFragment">
+        tools:context="com.moana.roadpro_manage.car.CarBasicFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

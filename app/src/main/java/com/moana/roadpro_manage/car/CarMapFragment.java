@@ -1,4 +1,4 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.car;
 
 import android.database.Cursor;
 import android.net.Uri;

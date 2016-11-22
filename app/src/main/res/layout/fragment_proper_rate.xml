@@ -5,7 +5,7 @@
     android:background="@color/colorLightBlue"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.moana.roadpro_manage.ev_car.report.ProperRateFragment">
+    tools:context="com.moana.roadpro_manage.car.report.ProperRateFragment">
 
     <include layout="@layout/header_selector" />
 

@@ -6,13 +6,9 @@ import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
-import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
-import com.moana.roadpro_manage.base.ConstantDef;
-import com.moana.roadpro_manage.ev_car.CarInfoActivity;
 
 public class ParkAdapter extends AbstractRecyclerCursorAdapter {
     public ParkAdapter(Context context, Cursor c) {

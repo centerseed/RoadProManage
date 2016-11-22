@@ -1,4 +1,4 @@
-package com.moana.roadpro_manage.ev_car;
+package com.moana.roadpro_manage.car;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
