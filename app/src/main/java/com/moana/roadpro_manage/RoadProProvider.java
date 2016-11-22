@@ -10,6 +10,8 @@ public class RoadProProvider extends BaseContentProvider {
 
     public final static String TABLE_CAR = "_table_car";
     public final static String TABLE_MAINTAIN = "_table_maintain";
+    public final static String TABLE_CAR_STATION = "_table_car_station";
+    public final static String TABLE_PLUG_STATION = "_table_plug_station";
 
     public final static String FIELD_LAT = "_lnt";
     public final static String FIELD_LNG = "_lng";
@@ -36,6 +38,17 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String FIELD_MAINTAIN_ITEM_DETAIL = "_maintain_item_detail";
     public final static String FIELD_MAINTAIN_REASON = "_maintain_reason";
 
+    public final static String FIELD_CAR_STATION_NAME = "_car_name";
+    public final static String FIELD_CAR_STATION_ADDRESS = "_car_address";
+    public final static String FIELD_CAR_STATION_PHOTO = "_car_photo";
+
+    public final static String FIELD_PLUG_STATION_NAME = "_plug_name";
+    public final static String FIELD_PLUG_STATION_ADDRESS = "_plug_address";
+    public final static String FIELD_PLUG_STATION_PHOTO = "_car_photo";
+
+    public final static String FIELD_TOTAL = "_total";
+    public final static String FIELD_USAGE = "_usage";
+
     @Override
     public boolean onCreate() {
         mDb = new RoadProDatabase(getContext());
@@ -43,7 +56,7 @@ public class RoadProProvider extends BaseContentProvider {
     }
 
     private class RoadProDatabase extends SQLiteOpenHelper {
-        private final static int _DBVersion = 4;
+        private final static int _DBVersion = 5;
         private final static String _DBName = "roadpro.db";
 
 
@@ -84,12 +97,36 @@ public class RoadProProvider extends BaseContentProvider {
                     + FIELD_MAINTAIN_ITEM_DETAIL + " TEXT, "
                     + FIELD_MAINTAIN_REASON + " TEXT "
                     + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CAR_STATION + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_CAR_STATION_NAME + " TEXT, "
+                    + FIELD_CAR_STATION_ADDRESS + " TEXT, "
+                    + FIELD_CAR_STATION_PHOTO + " TEXT, "
+                    + FIELD_LAT + " TEXT, "
+                    + FIELD_LNG + " TEXT, "
+                    + FIELD_TOTAL + " INTEGER, "
+                    + FIELD_USAGE + " INTEGER "
+                    + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PLUG_STATION + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_PLUG_STATION_NAME + " TEXT, "
+                    + FIELD_PLUG_STATION_ADDRESS + " TEXT, "
+                    + FIELD_PLUG_STATION_PHOTO + " TEXT, "
+                    + FIELD_LAT + " TEXT, "
+                    + FIELD_LNG + " TEXT, "
+                    + FIELD_TOTAL + " INTEGER, "
+                    + FIELD_USAGE + " INTEGER "
+                    + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int i, int i1) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_CAR);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_MAINTAIN);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_CAR_STATION);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLUG_STATION);
             onCreate(db);
         }
     }

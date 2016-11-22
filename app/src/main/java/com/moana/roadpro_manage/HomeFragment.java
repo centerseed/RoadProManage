@@ -15,8 +15,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.moana.roadpro_manage.base.ActionBarFragment;
 import com.moana.roadpro_manage.car.CarStatusFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
+import com.moana.roadpro_manage.plug.PlugFragment;
 
-public class HomeFragment extends ActionBarFragment implements OnMapReadyCallback {
+public class HomeFragment extends ActionBarFragment {
 
     ImageView mEvCar;
     ImageView mPark;
@@ -44,9 +45,6 @@ public class HomeFragment extends ActionBarFragment implements OnMapReadyCallbac
         mEvCar.setOnClickListener(listener);
         mPark.setOnClickListener(listener);
         mPlug.setOnClickListener(listener);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-       // mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -54,10 +52,6 @@ public class HomeFragment extends ActionBarFragment implements OnMapReadyCallbac
         return null;
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
-    }
 
     class OnFuncClickListener implements View.OnClickListener {
 
@@ -75,6 +69,7 @@ public class HomeFragment extends ActionBarFragment implements OnMapReadyCallbac
                     f = new ParkFragment();
                     break;
                 case R.id.plug:
+                    f = new PlugFragment();
                     break;
             }
 
