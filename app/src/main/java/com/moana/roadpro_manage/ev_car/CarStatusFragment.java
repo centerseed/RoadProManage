@@ -30,7 +30,7 @@ public class CarStatusFragment extends ContentFragment implements ContentMapFrag
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mMapFragment = new ContentMapFragment();
+        mMapFragment = new CarMapFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, mMapFragment).commit();
 
         mIntroduce = (LinearLayout) view.findViewById(R.id.header_intro);

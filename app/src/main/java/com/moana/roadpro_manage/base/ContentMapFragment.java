@@ -33,9 +33,9 @@ import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 
 
-public class ContentMapFragment extends SupportMapFragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback {
+public abstract class ContentMapFragment extends SupportMapFragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback {
     protected Uri mUri;
-    private GoogleMap mMap;
+    protected GoogleMap mMap;
     MapClickListener mListener;
 
     public interface MapClickListener {
@@ -47,6 +47,8 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
     public void setMapClickListener(MapClickListener listener) {
         mListener = listener;
     }
+
+    protected abstract Uri getProviderUri();
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -76,28 +78,7 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
         return cl;
     }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        if (data != null && data.moveToFirst() && mMap != null) {
-            mMap.clear();
-
-            while (!data.isAfterLast()) {
-
-                String carNO = data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_NO));
-                float lat = data.getFloat(data.getColumnIndex(RoadProProvider.FIELD_LAT));
-                float lng = data.getFloat(data.getColumnIndex(RoadProProvider.FIELD_LNG));
-
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(lat, lng))
-                        .snippet(carNO)
-                        .icon(BitmapDescriptorFactory.fromBitmap(writeTextOnDrawable(R.mipmap.icon_s1map_cartag_green, carNO))));
-
-                data.moveToNext();
-            }
-        }
-    }
-
-    private Bitmap writeTextOnDrawable(int drawableId, String text) {
+    protected Bitmap writeTextOnDrawable(int drawableId, String text) {
 
         Bitmap bm = BitmapFactory.decodeResource(getResources(), drawableId)
                 .copy(Bitmap.Config.ARGB_8888, true);
@@ -146,10 +127,6 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
 
     }
 
-    protected Uri getProviderUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -192,7 +169,7 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
         moveCamera(9.62f, location);
     }
 
-    private void moveCamera(float zoom, Location location) {
+    protected void moveCamera(float zoom, Location location) {
         CameraPosition cameraPosition =
                 new CameraPosition.Builder()
                         .target(new LatLng(location.getLatitude(), location.getLongitude()))
