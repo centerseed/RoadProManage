@@ -56,9 +56,7 @@ public class PlugMapFragment extends ContentMapFragment implements OnMapReadyCal
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst() && mMap != null) {
             mMap.clear();
-
             while (!data.isAfterLast()) {
-
                 String id = data.getString(data.getColumnIndex(RoadProProvider.FIELD_ID));
                 String name = data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_NAME));
                 String address = data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_ADDRESS));

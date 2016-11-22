@@ -10,6 +10,7 @@ import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.RecyclerFragment;
 import com.moana.roadpro_manage.dummy.DummyCarSource;
+import com.moana.roadpro_manage.dummy.DummyStationSource;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class ParkListFragment extends RecyclerFragment {
         // Skip parser
         getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
 
-        ArrayList<ContentValues> values = DummyCarSource.getCarData();
+        ArrayList<ContentValues> values = DummyStationSource.getParkList();
         for (ContentValues v : values)
             getContext().getContentResolver().insert(mUri, v);
 
@@ -40,7 +41,7 @@ public class ParkListFragment extends RecyclerFragment {
 
     @Override
     protected Uri getProviderUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
     }
 
     @Override

@@ -8,6 +8,119 @@ import java.util.ArrayList;
 
 public class DummyStationSource {
 
+    public static ArrayList<ContentValues> getParkList() {
+        ArrayList<ContentValues> arrayList = new ArrayList<>();
+
+        // Dummy 1
+        ContentValues values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent1".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "四維行政中心");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市苓雅區四維三路2號");
+        values.put(RoadProProvider.FIELD_LAT, 22.6204309);
+        values.put(RoadProProvider.FIELD_LNG, 120.3098272);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/jende168/1367568101-4022866151.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 2
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent2".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "鳳山行政中心");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市鳳山區光復路二段132號");
+        values.put(RoadProProvider.FIELD_LAT, 22.6299537);
+        values.put(RoadProProvider.FIELD_LNG, 120.3415605);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.mygonews.com/fetch.php?v=4659399c87213b23732f8ae3cacbf230.jpg&t=newsPhoto");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 3
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent3".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "高鐵左營站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市左營區高鐵路105號");
+        values.put(RoadProProvider.FIELD_LAT, 22.6873814);
+        values.put(RoadProProvider.FIELD_LNG, 120.30588);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/dolpuppy1/1336476441-2050761243.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 4
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent4".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "高雄火車站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市三民區建國320號");
+        values.put(RoadProProvider.FIELD_LAT, 22.6397615);
+        values.put(RoadProProvider.FIELD_LNG, 120.2999183);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://www.awem.com.tw/11/11/11000122/338280.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 5
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent5".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "美麗島站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市新興區中山一路115號");
+        values.put(RoadProProvider.FIELD_LAT, 22.631386);
+        values.put(RoadProProvider.FIELD_LNG, 120.2997623);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://farm4.static.flickr.com/3041/2894573271_e415ba9fee_o.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 6
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent6".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "西子灣站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市鼓山區");
+        values.put(RoadProProvider.FIELD_LAT, 22.6215405);
+        values.put(RoadProProvider.FIELD_LNG, 120.2723397);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/yingoyingo/4a6f0903e6519.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 7
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent7".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "凱旋站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市前鎮區中山三路2-1號號");
+        values.put(RoadProProvider.FIELD_LAT, 22.5969);
+        values.put(RoadProProvider.FIELD_LNG, 120.3131243);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/ice2006/1197213827_n.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 8
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent8".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "凹子底站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市鼓山區博愛二路21號");
+        values.put(RoadProProvider.FIELD_LAT, 22.6563565);
+        values.put(RoadProProvider.FIELD_LNG, 120.2943339);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "https://www.google.com.tw/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjU2_SloJbQAhUGwbwKHa02BUUQjBwIBA&url=http%3A%2F%2F5.blog.xuite.net%2F5%2F7%2Fb%2F7%2F17972557%2Fblog_1691199%2Ftxt%2F43994558%2F0.jpg&psig=AFQjCNFrXqz3WKfBq5wJcUYKPZltS-WnXQ&ust=1478594606842442");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        values.put(RoadProProvider.FIELD_USAGE, 5);
+        arrayList.add(values);
+
+        // Dummy 9
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent9".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "小港站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市小港區沿海一路280號");
+        values.put(RoadProProvider.FIELD_LAT, 22.5648119);
+        values.put(RoadProProvider.FIELD_LNG, 120.3516634);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/ice2006/1197262071.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        arrayList.add(values);
+
+        return arrayList;
+    }
+
     public static ArrayList<ContentValues> getPlugList() {
         ArrayList<ContentValues> arrayList = new ArrayList<>();
 
