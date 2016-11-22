@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
+import com.moana.roadpro_manage.base.ConstantDef;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,6 +61,7 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
                     Cursor cursor = (Cursor) getItem(getAdapterPosition());
 
                     Intent intent = new Intent(m_context, ParkInfoActivity.class);
+                    intent.putExtra(ConstantDef.ARG_STRING, cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
                     m_context.startActivity(intent);
                 }
             });

@@ -31,16 +31,21 @@ public abstract class BasePagerFragment extends ActionBarFragment {
 
         mViewPager = (ViewPager) view.findViewById(R.id.fragment_pager);
         viewPagerTab = (SmartTabLayout) view.findViewById(R.id.viewpagertab);
+
+        FragmentPagerAdapter sectionsPagerAdapter = getPagerAdapter(getChildFragmentManager());
+        mViewPager.setAdapter(sectionsPagerAdapter);
+        viewPagerTab.setViewPager(mViewPager);
+        sectionsPagerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return null;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        FragmentPagerAdapter sectionsPagerAdapter = getPagerAdapter(getChildFragmentManager());
-        mViewPager.setAdapter(sectionsPagerAdapter);
-        viewPagerTab.setViewPager(mViewPager);
-        sectionsPagerAdapter.notifyDataSetChanged();
-
     }
 
     protected abstract FragmentPagerAdapter getPagerAdapter(FragmentManager fm);
