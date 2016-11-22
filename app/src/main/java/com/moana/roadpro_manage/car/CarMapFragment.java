@@ -9,7 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
-import com.moana.roadpro_manage.base.ContentMapFragment;
+import com.moana.roadpro_manage.map.ContentMapFragment;
 
 public class CarMapFragment extends ContentMapFragment {
     protected Uri getProviderUri() {

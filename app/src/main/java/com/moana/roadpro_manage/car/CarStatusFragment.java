@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.ContentFragment;
-import com.moana.roadpro_manage.base.ContentMapFragment;
+import com.moana.roadpro_manage.map.ContentMapFragment;
 
 public class CarStatusFragment extends ContentFragment implements ContentMapFragment.MapClickListener {
 

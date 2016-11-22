@@ -7,8 +7,7 @@ import android.support.v4.content.Loader;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.Marker;
-import com.moana.roadpro_manage.base.ContentMapFragment;
+import com.moana.roadpro_manage.map.ContentMapFragment;
 
 public class ParkMapFragment extends ContentMapFragment implements OnMapReadyCallback {
 
