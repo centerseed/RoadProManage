@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.moana.roadpro_manage.curing.CuringFragment;
 import com.moana.roadpro_manage.ev_car.CarListFragment;
 import com.moana.roadpro_manage.ev_car.CarStatusFragment;
-import com.moana.roadpro_manage.ev_car.IntroduceFragment;
 import com.moana.roadpro_manage.ev_car.report.CarReportFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
 import com.moana.roadpro_manage.park.ParkReportFragment;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mListCar;
     LinearLayout mListPlug;
 
-    TextView mItemIntroduce;
     LinearLayout mItemCarActivity;
     LinearLayout mItemCarList;
     LinearLayout mItemCarMaintain;
@@ -119,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
             switch (view.getId()) {
                 // Layer 2
-                case R.id.introduce:
-                    f = new IntroduceFragment();
-                    break;
                 case R.id.car_activity:
                     f = new CarStatusFragment();
                     break;
@@ -183,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
         mListCar = (LinearLayout) headerView.findViewById(R.id.list_car);
         mListPlug = (LinearLayout) headerView.findViewById(R.id.list_plug);
 
-        mItemIntroduce = (TextView) headerView.findViewById(R.id.introduce);
         mItemCarActivity = (LinearLayout) headerView.findViewById(R.id.car_activity);
         mItemCarList = (LinearLayout) headerView.findViewById(R.id.car_list);
         mItemCarMaintain = (LinearLayout) headerView.findViewById(R.id.car_curing);
@@ -195,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
         mItemPlugManage = (LinearLayout) headerView.findViewById(R.id.plug_manage);
         mItemPlugReport = (LinearLayout) headerView.findViewById(R.id.plug_report);
 
-        mItemIntroduce.setOnClickListener(drawerClickListener);
         mItemCarActivity.setOnClickListener(drawerClickListener);
         mItemCarList.setOnClickListener(drawerClickListener);
         mItemCarMaintain.setOnClickListener(drawerClickListener);

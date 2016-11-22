@@ -21,10 +21,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.ui.IconGenerator;
 import com.moana.roadpro_manage.R;
+import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.ContentFragment;
 
 import java.util.ArrayList;
@@ -76,7 +80,7 @@ public class MapsFragment extends ContentFragment implements OnMapReadyCallback,
 
     @Override
     protected Uri getProviderUri() {
-        return null;
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
     }
 
     @Override
@@ -96,7 +100,7 @@ public class MapsFragment extends ContentFragment implements OnMapReadyCallback,
         Location location = new Location("");
         location.setLatitude(23.6000634);
         location.setLongitude(120.982024);
-        moveCamera(7.62f, location);
+        moveCamera(9.62f, location);
     }
 
     private void moveCamera(float zoom, Location location) {
@@ -127,7 +131,28 @@ public class MapsFragment extends ContentFragment implements OnMapReadyCallback,
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst() && mMap != null) {
             mMap.clear();
+
+            while (!data.isAfterLast()) {
+                IconGenerator iconFactory = new IconGenerator(getContext());
+
+                String carNO = data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_NO));
+                double lat = data.getDouble(data.getColumnIndex(RoadProProvider.FIELD_LAT));
+                double lng = data.getDouble(data.getColumnIndex(RoadProProvider.FIELD_LNG));
+
+                iconFactory.setBackground(getResources().getDrawable(R.mipmap.icon_s1map_cartag_green));
+                addIcon(iconFactory, carNO, new LatLng(lat, lng));
+                data.moveToNext();
+            }
         }
+    }
+
+    private void addIcon(IconGenerator iconFactory, CharSequence text, LatLng position) {
+        MarkerOptions markerOptions = new MarkerOptions().
+                icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon(text))).
+                position(position).
+                anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV());
+
+        mMap.addMarker(markerOptions);
     }
 
     @Override

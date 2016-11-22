@@ -4,7 +4,6 @@ package com.moana.roadpro_manage;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.moana.roadpro_manage.base.ActionBarFragment;
-import com.moana.roadpro_manage.ev_car.IntroduceFragment;
+import com.moana.roadpro_manage.ev_car.CarStatusFragment;
 import com.moana.roadpro_manage.park.ParkFragment;
 
 public class HomeFragment extends ActionBarFragment implements OnMapReadyCallback {
@@ -70,7 +69,7 @@ public class HomeFragment extends ActionBarFragment implements OnMapReadyCallbac
             mToolbar.setDisplayHomeAsUpEnabled(true);
             switch (view.getId()) {
                 case R.id.ev_car:
-                    f = new IntroduceFragment();
+                    f = new CarStatusFragment();
                     break;
                 case R.id.park:
                     f = new ParkFragment();

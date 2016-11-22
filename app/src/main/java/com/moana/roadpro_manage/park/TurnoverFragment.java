@@ -32,7 +32,7 @@ public class TurnoverFragment extends ContentFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_order, menu);
+        inflater.inflate(R.menu.menu_date, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 

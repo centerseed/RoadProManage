@@ -20,14 +20,14 @@ public class RentCountListFragment extends RecyclerFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_order, menu);
+        inflater.inflate(R.menu.menu_date, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_order:
+            case R.id.action_date:
                 showSelectedDialog();
                 break;
         }

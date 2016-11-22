@@ -28,6 +28,8 @@ public class DummyCarSource {
         value.put(RoadProProvider.FIELD_CAR_SOC, "90");
         value.put(RoadProProvider.FIELD_CAR_VOLTAGE, "120V");
         value.put(RoadProProvider.FIELD_CAR_CARRY_NUM, "4");
+        value.put(RoadProProvider.FIELD_LAT, 24.2568513);
+        value.put(RoadProProvider.FIELD_LNG, 120.7101598);
 
         values.add(value);
 
@@ -48,6 +50,8 @@ public class DummyCarSource {
         value.put(RoadProProvider.FIELD_CAR_SOC, "92");
         value.put(RoadProProvider.FIELD_CAR_VOLTAGE, "120V");
         value.put(RoadProProvider.FIELD_CAR_CARRY_NUM, "4");
+        value.put(RoadProProvider.FIELD_LAT, 24.102473);
+        value.put(RoadProProvider.FIELD_LNG, 120.7101598);
 
         values.add(value);
         return values;

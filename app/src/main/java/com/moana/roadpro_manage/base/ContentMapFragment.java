@@ -1,8 +1,16 @@
 package com.moana.roadpro_manage.base;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,13 +24,29 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.moana.roadpro_manage.R;
+import com.moana.roadpro_manage.RoadProProvider;
 
 
 public class ContentMapFragment extends SupportMapFragment implements LoaderManager.LoaderCallbacks<Cursor>, OnMapReadyCallback {
     protected Uri mUri;
     private GoogleMap mMap;
+    MapClickListener mListener;
+
+    public interface MapClickListener {
+        void onMapMarkerClick(String cardNO);
+
+        void onMapClick();
+    }
+
+    public void setMapClickListener(MapClickListener listener) {
+        mListener = listener;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -36,9 +60,6 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
         if (mMap == null) {
             getMapAsync(this);
         }
-
-        if (mUri != null)
-            getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -57,6 +78,66 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data != null && data.moveToFirst() && mMap != null) {
+            mMap.clear();
+
+            while (!data.isAfterLast()) {
+
+                String carNO = data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_NO));
+                float lat = data.getFloat(data.getColumnIndex(RoadProProvider.FIELD_LAT));
+                float lng = data.getFloat(data.getColumnIndex(RoadProProvider.FIELD_LNG));
+
+                mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(lat, lng))
+                        .snippet(carNO)
+                        .icon(BitmapDescriptorFactory.fromBitmap(writeTextOnDrawable(R.mipmap.icon_s1map_cartag_green, carNO))));
+
+                data.moveToNext();
+            }
+        }
+    }
+
+    private Bitmap writeTextOnDrawable(int drawableId, String text) {
+
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), drawableId)
+                .copy(Bitmap.Config.ARGB_8888, true);
+
+        Typeface tf = Typeface.create("Helvetica", Typeface.BOLD);
+
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.WHITE);
+        paint.setTypeface(tf);
+        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setTextSize(convertToPixels(getContext(), 12));
+
+        Rect textRect = new Rect();
+        paint.getTextBounds(text, 0, text.length(), textRect);
+
+        Canvas canvas = new Canvas(bm);
+
+        //If the text is bigger than the canvas , reduce the font size
+        if (textRect.width() >= (canvas.getWidth() - 2))     //the padding on either sides is considered as 4, so as to appropriately fit in the text
+            paint.setTextSize(convertToPixels(getContext(), 10));        //Scaling needs to be used for different dpi's
+
+        //Calculate the positions
+        int xPos = (canvas.getWidth() / 2) - 2;     //-2 is for regulating the x position offset
+
+        //"- ((paint.descent() + paint.ascent()) / 2)" is the distance from the baseline to the center.
+        int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
+
+        String carStr[] = text.split("-");
+        canvas.drawText(carStr[0], xPos, yPos, paint);
+        canvas.drawText("-" + carStr[1], xPos, (float) (canvas.getHeight() / 1.35), paint);
+
+        return bm;
+    }
+
+
+    public static int convertToPixels(Context context, int nDP) {
+        final float conversionScale = context.getResources().getDisplayMetrics().density;
+
+        return (int) ((nDP * conversionScale) + 0.5f);
 
     }
 
@@ -66,7 +147,7 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
     }
 
     protected Uri getProviderUri() {
-        return null;
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
     }
 
     @Override
@@ -74,19 +155,41 @@ public class ContentMapFragment extends SupportMapFragment implements LoaderMana
         mMap = googleMap;
         moveToDummyPosition();
 
+        mMap.getUiSettings().setMyLocationButtonEnabled(false);
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if (mListener != null) {
+                    mListener.onMapMarkerClick(marker.getSnippet());
+                }
+                return false;
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                mListener.onMapClick();
+            }
+        });
+
+        if (mUri != null)
+            getLoaderManager().initLoader(0, null, this);
 
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    0);
             return;
         }
         mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setMyLocationButtonEnabled(false);
     }
 
     private void moveToDummyPosition() {
         Location location = new Location("");
-        location.setLatitude(23.6000634);
-        location.setLongitude(120.982024);
-        moveCamera(7.62f, location);
+        location.setLatitude(24.2600634);
+        location.setLongitude(120.722024);
+        moveCamera(9.62f, location);
     }
 
     private void moveCamera(float zoom, Location location) {
