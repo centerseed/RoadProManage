@@ -42,6 +42,7 @@
         <activity android:name=".park.ParkInfoActivity"></activity>
         <activity android:name=".plug.PlugInfoActivity" />
         <activity android:name=".park.ParkEditInfoActivity"/>
+        <activity android:name=".plug.PlugEditInfoActivity"/>
     </application>
 
 </manifest>

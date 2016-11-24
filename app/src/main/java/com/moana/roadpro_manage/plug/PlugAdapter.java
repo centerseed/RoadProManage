@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.ConstantDef;
+import com.moana.roadpro_manage.park.ParkAdapter;
 import com.moana.roadpro_manage.park.ParkInfoActivity;
 import com.squareup.picasso.Picasso;
 
@@ -20,6 +22,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class PlugAdapter extends AbstractRecyclerCursorAdapter {
     public PlugAdapter(Context context, Cursor c) {
         super(context, c);
+    }
+
+    boolean isDelete = false;
+    PlugClickListener mListener;
+
+    public interface PlugClickListener{
+        void onPlugSelect(String parkId);
+        void onPlugDelete(String parkId);
     }
 
     @Override
@@ -33,6 +43,11 @@ public class PlugAdapter extends AbstractRecyclerCursorAdapter {
         vh.mName.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_NAME)));
         // vh.mID.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
         vh.mAddress.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_ADDRESS)));
+
+        if (isDelete)
+            vh.mDelete.setVisibility(View.VISIBLE);
+        else
+            vh.mDelete.setVisibility(View.GONE);
     }
 
     @Override
@@ -41,12 +56,22 @@ public class PlugAdapter extends AbstractRecyclerCursorAdapter {
         return new PlugAdapter.PlugViewHolder(v);
     }
 
+    public void setParkClickListener(PlugClickListener listener) {
+        mListener = listener;
+    }
+
+    public void toggleDelete() {
+        isDelete = !isDelete;
+        notifyDataSetChanged();
+    }
+
     public class PlugViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView mImageView;
         TextView mID;
         TextView mName;
         TextView mAddress;
+        ImageView mDelete;
 
         public PlugViewHolder(View itemView) {
             super(itemView);
@@ -55,15 +80,26 @@ public class PlugAdapter extends AbstractRecyclerCursorAdapter {
             mID = (TextView) itemView.findViewById(R.id.id);
             mName = (TextView) itemView.findViewById(R.id.name);
             mAddress = (TextView) itemView.findViewById(R.id.address);
+            mDelete = (ImageView) itemView.findViewById(R.id.delete);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Cursor cursor = (Cursor) getItem(getAdapterPosition());
 
-                    Intent intent = new Intent(m_context, PlugInfoActivity.class);
-                    intent.putExtra(ConstantDef.ARG_STRING, cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
-                    m_context.startActivity(intent);
+                    if (mListener != null) {
+                        mListener.onPlugSelect(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    }
+                }
+            });
+
+            mDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Cursor cursor = (Cursor) getItem(getAdapterPosition());
+                    if (mListener != null) {
+                        mListener.onPlugDelete(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    }
                 }
             });
         }
