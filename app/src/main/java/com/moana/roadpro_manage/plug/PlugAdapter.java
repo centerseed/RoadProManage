@@ -1,6 +1,7 @@
 package com.moana.roadpro_manage.plug;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
+import com.moana.roadpro_manage.base.ConstantDef;
+import com.moana.roadpro_manage.park.ParkInfoActivity;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -58,8 +61,9 @@ public class PlugAdapter extends AbstractRecyclerCursorAdapter {
                 public void onClick(View view) {
                     Cursor cursor = (Cursor) getItem(getAdapterPosition());
 
-                    // Intent intent = new Intent(m_context, ParkInfoActivity.class);
-                    // m_context.startActivity(intent);
+                    Intent intent = new Intent(m_context, PlugInfoActivity.class);
+                    intent.putExtra(ConstantDef.ARG_STRING, cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    m_context.startActivity(intent);
                 }
             });
         }

@@ -3,7 +3,10 @@ package com.moana.roadpro_manage.plug;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.Menu;
+import android.view.MenuInflater;
 
+import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.BasePagerFragment;
 
 public class PlugFragment extends BasePagerFragment {
@@ -48,5 +51,11 @@ public class PlugFragment extends BasePagerFragment {
             }
             return "";
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
 }

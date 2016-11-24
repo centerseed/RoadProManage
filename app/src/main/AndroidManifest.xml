@@ -40,6 +40,8 @@
             android:name=".car.CarCuringActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".park.ParkInfoActivity"></activity>
+        <activity android:name=".plug.PlugInfoActivity" />
+        <activity android:name=".park.ParkEditInfoActivity"/>
     </application>
 
 </manifest>

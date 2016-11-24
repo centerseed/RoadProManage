@@ -1,5 +1,6 @@
 package com.moana.roadpro_manage.car;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v4.content.Loader;
@@ -9,11 +10,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
+import com.moana.roadpro_manage.dummy.DummyCarSource;
 import com.moana.roadpro_manage.map.ContentMapFragment;
+
+import java.util.ArrayList;
 
 public class CarMapFragment extends ContentMapFragment {
     protected Uri getProviderUri() {
         return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ArrayList<ContentValues> values = DummyCarSource.getCarData();
+        for (ContentValues v : values)
+            getContext().getContentResolver().insert(mUri, v);
+
+        getContext().getContentResolver().notifyChange(mUri, null);
     }
 
     @Override

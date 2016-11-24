@@ -1,6 +1,5 @@
 package com.moana.roadpro_manage.park;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,25 +18,31 @@ import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.ContentActivity;
 import com.squareup.picasso.Picasso;
 
-public class ParkInfoActivity extends ContentActivity {
+public class ParkEditInfoActivity extends ContentActivity {
 
     ImageView mPark;
-    TextView mName;
-    TextView mAddress;
+    EditText mName;
+    EditText mAddress;
     String mParkID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_park_info);
+        setContentView(R.layout.activity_edit_park_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("停車場資訊");
 
         mParkID = getIntent().getStringExtra(ConstantDef.ARG_STRING);
 
+        if (mParkID == null) {
+            getSupportActionBar().setTitle("新增停車場");
+        } else {
+            getSupportActionBar().setTitle("修改停車場資訊");
+        }
+
         mPark = (ImageView) findViewById(R.id.park_img);
-        mName = (TextView) findViewById(R.id.name);
-        mAddress = (TextView) findViewById(R.id.address);
+        mName = (EditText) findViewById(R.id.name);
+        mAddress = (EditText) findViewById(R.id.address);
     }
 
     @Override
@@ -47,7 +53,7 @@ public class ParkInfoActivity extends ContentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_edit, menu);
+        inflater.inflate(R.menu.menu_done, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -55,11 +61,10 @@ public class ParkInfoActivity extends ContentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_edit) {
-            Intent intent = new Intent(this, ParkEditInfoActivity.class);
-            intent.putExtra(ConstantDef.ARG_STRING, mParkID);
-            startActivity(intent);
+        if (id == R.id.action_done) {
+            // TODO: add park here
         }
+
         if (id == android.R.id.home) {
             finish();
         }
@@ -70,7 +75,11 @@ public class ParkInfoActivity extends ContentActivity {
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
         cl.setSelection(RoadProProvider.FIELD_ID + "=?");
-        cl.setSelectionArgs(new String[]{mParkID});
+        if (mParkID != null) {
+            cl.setSelectionArgs(new String[]{mParkID});
+        } else {
+            cl.setSelectionArgs(new String[]{""});
+        }
         return cl;
     }
 

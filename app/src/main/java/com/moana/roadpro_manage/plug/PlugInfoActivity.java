@@ -1,6 +1,5 @@
-package com.moana.roadpro_manage.park;
+package com.moana.roadpro_manage.plug;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,21 +17,21 @@ import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.ContentActivity;
 import com.squareup.picasso.Picasso;
 
-public class ParkInfoActivity extends ContentActivity {
+public class PlugInfoActivity extends ContentActivity {
 
     ImageView mPark;
     TextView mName;
     TextView mAddress;
-    String mParkID;
+    String mPlugID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_park_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("停車場資訊");
+        getSupportActionBar().setTitle("充電站資訊");
 
-        mParkID = getIntent().getStringExtra(ConstantDef.ARG_STRING);
+        mPlugID = getIntent().getStringExtra(ConstantDef.ARG_STRING);
 
         mPark = (ImageView) findViewById(R.id.park_img);
         mName = (TextView) findViewById(R.id.name);
@@ -41,7 +40,7 @@ public class ParkInfoActivity extends ContentActivity {
 
     @Override
     protected Uri getProviderUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
     }
 
     @Override
@@ -55,11 +54,6 @@ public class ParkInfoActivity extends ContentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_edit) {
-            Intent intent = new Intent(this, ParkEditInfoActivity.class);
-            intent.putExtra(ConstantDef.ARG_STRING, mParkID);
-            startActivity(intent);
-        }
         if (id == android.R.id.home) {
             finish();
         }
@@ -70,19 +64,19 @@ public class ParkInfoActivity extends ContentActivity {
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
         cl.setSelection(RoadProProvider.FIELD_ID + "=?");
-        cl.setSelectionArgs(new String[]{mParkID});
+        cl.setSelectionArgs(new String[]{mPlugID});
         return cl;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-            String url = data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_PHOTO));
+            String url = data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_PHOTO));
             if (url != null && url.length() > 0)
                 Picasso.with(this).load(url).into(mPark);
 
-            mName.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_NAME)));
-            mAddress.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_ADDRESS)));
+            mName.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_NAME)));
+            mAddress.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_ADDRESS)));
         }
     }
 

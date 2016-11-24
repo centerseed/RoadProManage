@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
@@ -21,6 +22,14 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
         super(context, c);
     }
 
+    boolean isDelete = false;
+    ParkClickListener mListener;
+
+    public interface ParkClickListener{
+        void onParkSelect(String parkId);
+        void onParkDelete(String parkId);
+    }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, Cursor cursor) {
         CarViewHolder vh = (CarViewHolder) viewHolder;
@@ -32,6 +41,11 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
         vh.mName.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_NAME)));
         // vh.mID.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
         vh.mAddress.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_ADDRESS)));
+
+        if (isDelete)
+            vh.mDelete.setVisibility(View.VISIBLE);
+        else
+            vh.mDelete.setVisibility(View.GONE);
     }
 
     @Override
@@ -40,9 +54,19 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
         return new ParkAdapter.CarViewHolder(v);
     }
 
+    public void setParkClickListener(ParkClickListener listener) {
+        mListener = listener;
+    }
+
+    public void toggleDelete() {
+        isDelete = !isDelete;
+        notifyDataSetChanged();
+    }
+
     public class CarViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView mImageView;
+        ImageView mDelete;
         TextView mID;
         TextView mName;
         TextView mAddress;
@@ -51,6 +75,7 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
             super(itemView);
 
             mImageView = (CircleImageView) itemView.findViewById(R.id.image);
+            mDelete = (ImageView) itemView.findViewById(R.id.delete);
             mID = (TextView) itemView.findViewById(R.id.id);
             mName = (TextView) itemView.findViewById(R.id.name);
             mAddress = (TextView) itemView.findViewById(R.id.address);
@@ -60,9 +85,19 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
                 public void onClick(View view) {
                     Cursor cursor = (Cursor) getItem(getAdapterPosition());
 
-                    Intent intent = new Intent(m_context, ParkInfoActivity.class);
-                    intent.putExtra(ConstantDef.ARG_STRING, cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
-                    m_context.startActivity(intent);
+                    if (mListener != null) {
+                        mListener.onParkSelect(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    }
+                }
+            });
+
+            mDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Cursor cursor = (Cursor) getItem(getAdapterPosition());
+                    if (mListener != null) {
+                        mListener.onParkDelete(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    }
                 }
             });
         }

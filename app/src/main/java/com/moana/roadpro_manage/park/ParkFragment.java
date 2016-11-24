@@ -56,7 +56,7 @@ public class ParkFragment extends BasePagerFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_park, menu);
+        inflater.inflate(R.menu.menu_search, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 }

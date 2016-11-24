@@ -1,5 +1,6 @@
 package com.moana.roadpro_manage.park;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.location.Location;
 import android.net.Uri;
@@ -12,13 +13,27 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
+import com.moana.roadpro_manage.dummy.DummyCarSource;
+import com.moana.roadpro_manage.dummy.DummyStationSource;
 import com.moana.roadpro_manage.map.ContentMapFragment;
+
+import java.util.ArrayList;
 
 public class ParkMapFragment extends ContentMapFragment implements OnMapReadyCallback {
 
     @Override
     protected Uri getProviderUri() {
         return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ArrayList<ContentValues> values = DummyStationSource.getParkList();
+        for (ContentValues v : values)
+            getContext().getContentResolver().insert(mUri, v);
+
+        getContext().getContentResolver().notifyChange(mUri, null);
     }
 
     @Override
