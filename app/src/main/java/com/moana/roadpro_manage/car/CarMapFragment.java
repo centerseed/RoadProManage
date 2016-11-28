@@ -7,6 +7,7 @@ import android.support.v4.content.Loader;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
@@ -28,6 +29,11 @@ public class CarMapFragment extends ContentMapFragment {
             getContext().getContentResolver().insert(mUri, v);
 
         getContext().getContentResolver().notifyChange(mUri, null);
+    }
+
+    @Override
+    protected void onInfoClick(Marker marker) {
+
     }
 
     @Override

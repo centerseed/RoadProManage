@@ -1,6 +1,7 @@
 package com.moana.roadpro_manage.plug;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.v4.content.Loader;
@@ -9,11 +10,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
+import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.dummy.DummyStationSource;
 import com.moana.roadpro_manage.map.ContentMapFragment;
+import com.moana.roadpro_manage.park.ParkInfoActivity;
 
 import java.util.ArrayList;
 
@@ -47,6 +51,15 @@ public class PlugMapFragment extends ContentMapFragment implements OnMapReadyCal
     private void moveToDummyPosition() {
         LatLng latLng = new LatLng(23.6000634, 120.982024);
         moveCamera(7.62f, latLng);
+    }
+
+    @Override
+    protected void onInfoClick(Marker marker) {
+        Intent intent = new Intent(getActivity(), PlugInfoActivity.class);
+        String id = marker.getTitle().split(" - ")[1];
+        intent.putExtra(ConstantDef.ARG_STRING, id);
+
+        getActivity().startActivity(intent);
     }
 
     @Override

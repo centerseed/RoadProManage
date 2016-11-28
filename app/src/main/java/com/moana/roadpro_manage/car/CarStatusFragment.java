@@ -91,4 +91,5 @@ public class CarStatusFragment extends ContentFragment implements ContentMapFrag
     public void onMapClick() {
         showIntroduce();
     }
+
 }

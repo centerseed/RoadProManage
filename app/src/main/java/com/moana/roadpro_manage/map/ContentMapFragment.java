@@ -36,7 +36,6 @@ public abstract class ContentMapFragment extends SupportMapFragment implements L
 
     public interface MapClickListener {
         void onMapMarkerClick(String cardNO);
-
         void onMapClick();
     }
 
@@ -147,6 +146,13 @@ public abstract class ContentMapFragment extends SupportMapFragment implements L
             }
         });
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                onInfoClick(marker);
+            }
+        });
+
         if (mUri != null)
             getLoaderManager().initLoader(0, null, this);
 
@@ -172,4 +178,6 @@ public abstract class ContentMapFragment extends SupportMapFragment implements L
                         .build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
+
+    protected abstract void onInfoClick(Marker marker);
 }

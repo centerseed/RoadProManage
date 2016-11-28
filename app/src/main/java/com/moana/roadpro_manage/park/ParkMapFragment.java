@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
@@ -63,6 +64,15 @@ public class ParkMapFragment extends BroadcastMap implements OnMapReadyCallback 
     private void moveToDummyPosition() {
         LatLng location = new LatLng(23.6000634, 120.982024);
         moveCamera(7.62f, location);
+    }
+
+    @Override
+    protected void onInfoClick(Marker marker) {
+        Intent intent = new Intent(getActivity(), ParkInfoActivity.class);
+        String id = marker.getTitle().split(" - ")[1];
+        intent.putExtra(ConstantDef.ARG_STRING, id);
+
+        getActivity().startActivity(intent);
     }
 
     @Override
