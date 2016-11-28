@@ -12,6 +12,7 @@
     <color name="colorYellow">#fad82f</color>
     <color name="colorTextBlack">#343434</color>
 
+    <color name="colorAlphaWhite">#EDffffff</color>
     <color name="colorLine1">#88cc01</color>
     <color name="colorLine2">#ca3e02</color>
     <color name="colorLine3">#0e73cc</color>

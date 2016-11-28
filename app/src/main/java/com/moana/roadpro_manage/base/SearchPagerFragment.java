@@ -32,7 +32,8 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
     protected String mSearchText;
     protected ViewPager mViewPager;
     SmartTabLayout viewPagerTab;
-    RecyclerView mSearchResultList;
+    protected SearchView mSearchView;
+    protected RecyclerView mSearchResultList;
     protected AbstractRecyclerCursorAdapter mAdapter;
 
     @Override
@@ -44,6 +45,9 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        mUri = getUri();
+        mAdapter = getSearchAdapter();
 
         mViewPager = (ViewPager) view.findViewById(R.id.fragment_pager);
         viewPagerTab = (SmartTabLayout) view.findViewById(R.id.viewpagertab);
@@ -76,12 +80,11 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
 
-        SearchView searchView = null;
         if (searchItem != null) {
-            searchView = (SearchView) searchItem.getActionView();
+             mSearchView = (SearchView) searchItem.getActionView();
         }
-        if (searchView != null) {
-            searchView.setOnQueryTextListener(this);
+        if (mSearchView != null) {
+            mSearchView.setOnQueryTextListener(this);
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -132,4 +135,5 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
     }
 
     protected abstract FragmentPagerAdapter getPagerAdapter(FragmentManager fm);
+    protected abstract AbstractRecyclerCursorAdapter getSearchAdapter();
 }

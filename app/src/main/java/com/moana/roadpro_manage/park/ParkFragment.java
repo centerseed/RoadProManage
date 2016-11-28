@@ -2,6 +2,7 @@ package com.moana.roadpro_manage.park;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,18 +13,22 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.moana.roadpro_manage.ParkSearchResultAdapter;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
+import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.BasePagerFragment;
+import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.SearchPagerFragment;
 
-public class ParkFragment extends SearchPagerFragment {
+public class ParkFragment extends SearchPagerFragment implements ParkSearchResultAdapter.ResultAdapterListener {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -33,6 +38,13 @@ public class ParkFragment extends SearchPagerFragment {
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
         return new SectionsPagerAdapter(fm);
+    }
+
+    @Override
+    protected AbstractRecyclerCursorAdapter getSearchAdapter() {
+        ParkSearchResultAdapter adapter = new ParkSearchResultAdapter(getContext(), null);
+        adapter.setSiteSearchResultAdapterListener(this);
+        return adapter;
     }
 
     @Override
@@ -50,6 +62,18 @@ public class ParkFragment extends SearchPagerFragment {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
         cl.setSelection(" (" + RoadProProvider.FIELD_CAR_STATION_ADDRESS + " like '%" + mSearchText + "%' or " + RoadProProvider.FIELD_CAR_STATION_NAME + " like '%" + mSearchText + "%')");
         return cl;
+    }
+
+    @Override
+    public void onResultClick(String snippet) {
+        Intent intent = new Intent();
+        intent.setAction(ConstantDef.ACTION_MOVE_TO_POSITION);
+        intent.putExtra(ConstantDef.ARG_STRING, snippet);
+        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
+
+        mSearchText = "";
+        mSearchView.onActionViewCollapsed();
+        mSearchResultList.setVisibility(View.GONE);
     }
 
 
