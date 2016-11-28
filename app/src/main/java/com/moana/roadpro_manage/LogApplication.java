@@ -35,7 +35,7 @@ public class LogApplication extends MultiDexApplication {
     }
 
     private void invokeLogActivity() {
-        Intent intent = new Intent("com.moana.carsharing.SEND_LOG");
+        Intent intent = new Intent("com.moana.roadpro_manage.SEND_LOG");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         System.exit(1);

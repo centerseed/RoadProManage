@@ -1,15 +1,34 @@
 package com.moana.roadpro_manage.park;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.moana.roadpro_manage.R;
+import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.BasePagerFragment;
+import com.moana.roadpro_manage.base.SearchPagerFragment;
 
-public class ParkFragment extends BasePagerFragment {
+public class ParkFragment extends SearchPagerFragment {
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
@@ -20,6 +39,19 @@ public class ParkFragment extends BasePagerFragment {
     protected String getActionBarTitle() {
         return "停車場查詢";
     }
+
+    @Override
+    public Uri getUri() {
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
+        cl.setSelection(" (" + RoadProProvider.FIELD_CAR_STATION_ADDRESS + " like '%" + mSearchText + "%' or " + RoadProProvider.FIELD_CAR_STATION_NAME + " like '%" + mSearchText + "%')");
+        return cl;
+    }
+
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -52,11 +84,5 @@ public class ParkFragment extends BasePagerFragment {
             }
             return "";
         }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_search, menu);
-        super.onCreateOptionsMenu(menu,inflater);
     }
 }

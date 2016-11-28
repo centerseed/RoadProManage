@@ -160,16 +160,14 @@ public abstract class ContentMapFragment extends SupportMapFragment implements L
     }
 
     private void moveToDummyPosition() {
-        Location location = new Location("");
-        location.setLatitude(24.2600634);
-        location.setLongitude(120.722024);
-        moveCamera(9.62f, location);
+        LatLng latLng = new LatLng(24.2600634, 120.722024);
+        moveCamera(9.62f, latLng);
     }
 
-    protected void moveCamera(float zoom, Location location) {
+    protected void moveCamera(float zoom, LatLng latLng) {
         CameraPosition cameraPosition =
                 new CameraPosition.Builder()
-                        .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                        .target(latLng)
                         .zoom(zoom)
                         .build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));

@@ -2,7 +2,6 @@ package com.moana.roadpro_manage.plug;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.location.Location;
 import android.net.Uri;
 import android.support.v4.content.Loader;
 
@@ -46,10 +45,8 @@ public class PlugMapFragment extends ContentMapFragment implements OnMapReadyCal
     }
 
     private void moveToDummyPosition() {
-        Location location = new Location("");
-        location.setLatitude(23.6000634);
-        location.setLongitude(120.982024);
-        moveCamera(7.62f, location);
+        LatLng latLng = new LatLng(23.6000634, 120.982024);
+        moveCamera(7.62f, latLng);
     }
 
     @Override

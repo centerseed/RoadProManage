@@ -1,6 +1,8 @@
 package com.moana.roadpro_manage.park;
 
 import android.content.ContentValues;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.location.Location;
 import android.net.Uri;
@@ -13,13 +15,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
+import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.dummy.DummyCarSource;
 import com.moana.roadpro_manage.dummy.DummyStationSource;
+import com.moana.roadpro_manage.map.BroadcastMap;
 import com.moana.roadpro_manage.map.ContentMapFragment;
 
 import java.util.ArrayList;
 
-public class ParkMapFragment extends ContentMapFragment implements OnMapReadyCallback {
+public class ParkMapFragment extends BroadcastMap implements OnMapReadyCallback {
 
     @Override
     protected Uri getProviderUri() {
@@ -37,6 +41,19 @@ public class ParkMapFragment extends ContentMapFragment implements OnMapReadyCal
     }
 
     @Override
+    public void addIntentFilter(IntentFilter filter) {
+        filter.addAction(ConstantDef.ACTION_MOVE_TO_POSITION);
+    }
+
+    @Override
+    public void onReceiveBroadcast(String action, Intent intent) {
+        if (ConstantDef.ACTION_MOVE_TO_POSITION.equals(action)) {
+            LatLng latLng = intent.getParcelableExtra(ConstantDef.ARG_LATLNG);
+            moveCamera(11, latLng);
+        }
+    }
+
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         super.onMapReady(googleMap);
 
@@ -44,9 +61,7 @@ public class ParkMapFragment extends ContentMapFragment implements OnMapReadyCal
     }
 
     private void moveToDummyPosition() {
-        Location location = new Location("");
-        location.setLatitude(23.6000634);
-        location.setLongitude(120.982024);
+        LatLng location = new LatLng(23.6000634, 120.982024);
         moveCamera(7.62f, location);
     }
 
