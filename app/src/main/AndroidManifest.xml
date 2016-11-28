@@ -41,10 +41,10 @@
         <activity
             android:name=".car.CarCuringActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".park.ParkInfoActivity"></activity>
+        <activity android:name=".park.ParkInfoActivity" />
         <activity android:name=".plug.PlugInfoActivity" />
-        <activity android:name=".park.ParkEditInfoActivity"/>
-        <activity android:name=".plug.PlugEditInfoActivity"/>
+        <activity android:name=".park.ParkEditInfoActivity" />
+        <activity android:name=".plug.PlugEditInfoActivity" />
         <activity
             android:name=".LogSenderActivity"
             android:launchMode="singleInstance"
@@ -55,6 +55,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

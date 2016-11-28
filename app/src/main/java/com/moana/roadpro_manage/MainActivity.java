@@ -1,5 +1,6 @@
 package com.moana.roadpro_manage;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
@@ -202,5 +204,15 @@ public class MainActivity extends AppCompatActivity {
         mItemPlugActivity.setOnClickListener(drawerClickListener);
         mItemPlugManage.setOnClickListener(drawerClickListener);
         mItemPlugReport.setOnClickListener(drawerClickListener);
+
+        Button logout = (Button) headerView.findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 }
