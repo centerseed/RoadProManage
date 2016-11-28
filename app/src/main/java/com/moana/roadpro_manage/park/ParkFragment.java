@@ -28,7 +28,7 @@ import com.moana.roadpro_manage.base.BasePagerFragment;
 import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.SearchPagerFragment;
 
-public class ParkFragment extends SearchPagerFragment implements ParkSearchResultAdapter.ResultAdapterListener {
+public class ParkFragment extends BasePagerFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -41,41 +41,9 @@ public class ParkFragment extends SearchPagerFragment implements ParkSearchResul
     }
 
     @Override
-    protected AbstractRecyclerCursorAdapter getSearchAdapter() {
-        ParkSearchResultAdapter adapter = new ParkSearchResultAdapter(getContext(), null);
-        adapter.setSiteSearchResultAdapterListener(this);
-        return adapter;
-    }
-
-    @Override
     protected String getActionBarTitle() {
         return "停車場查詢";
     }
-
-    @Override
-    public Uri getUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
-    }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
-        cl.setSelection(" (" + RoadProProvider.FIELD_CAR_STATION_ADDRESS + " like '%" + mSearchText + "%' or " + RoadProProvider.FIELD_CAR_STATION_NAME + " like '%" + mSearchText + "%')");
-        return cl;
-    }
-
-    @Override
-    public void onResultClick(String snippet) {
-        Intent intent = new Intent();
-        intent.setAction(ConstantDef.ACTION_MOVE_TO_POSITION);
-        intent.putExtra(ConstantDef.ARG_STRING, snippet);
-        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
-
-        mSearchText = "";
-        mSearchView.onActionViewCollapsed();
-        mSearchResultList.setVisibility(View.GONE);
-    }
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

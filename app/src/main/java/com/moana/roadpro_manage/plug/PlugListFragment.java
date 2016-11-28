@@ -2,9 +2,12 @@ package com.moana.roadpro_manage.plug;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,16 +17,13 @@ import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.ConstantDef;
+import com.moana.roadpro_manage.base.FunctionRecyclerFragment;
 import com.moana.roadpro_manage.base.RecyclerFragment;
-import com.moana.roadpro_manage.dummy.DummyCarSource;
 import com.moana.roadpro_manage.dummy.DummyStationSource;
-import com.moana.roadpro_manage.park.ParkAdapter;
-import com.moana.roadpro_manage.park.ParkEditInfoActivity;
-import com.moana.roadpro_manage.park.ParkInfoActivity;
 
 import java.util.ArrayList;
 
-public class PlugListFragment extends RecyclerFragment implements PlugAdapter.PlugClickListener {
+public class PlugListFragment extends FunctionRecyclerFragment implements PlugAdapter.PlugClickListener {
     @Override
     protected AbstractRecyclerCursorAdapter getAdapter() {
         return new PlugAdapter(getContext(), null);
@@ -33,12 +33,6 @@ public class PlugListFragment extends RecyclerFragment implements PlugAdapter.Pl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((PlugAdapter) mAdapter).setParkClickListener(this);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_parklist, menu);
-        super.onCreateOptionsMenu(menu,inflater);
     }
 
     @Override
@@ -71,13 +65,18 @@ public class PlugListFragment extends RecyclerFragment implements PlugAdapter.Pl
     }
 
     @Override
-    protected Uri getProviderUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
+        if (mSearchText.length() > 0)
+            cl.setSelection("(" + RoadProProvider.FIELD_PLUG_STATION_NAME + " like '%" + mSearchText + "%' or " + RoadProProvider.FIELD_PLUG_STATION_ADDRESS + " like '%" + mSearchText + "%')");
+        else
+            cl.setSelection(RoadProProvider.FIELD_ID + "!=0");
+        return cl;
     }
 
     @Override
-    protected String getActionBarTitle() {
-        return null;
+    protected Uri getProviderUri() {
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
     }
 
     @Override

@@ -54,6 +54,8 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
         if (data != null && data.moveToFirst()) {
             mAdapter.swapCursor(data);
             mSwipeRefresh.setRefreshing(false);
+        } else {
+            mAdapter.swapCursor(null);
         }
     }
 

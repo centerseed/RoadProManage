@@ -1,8 +1,6 @@
 package com.moana.roadpro_manage.base;
 
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -78,10 +75,9 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
 
         if (searchItem != null) {
-             mSearchView = (SearchView) searchItem.getActionView();
+            mSearchView = (SearchView) searchItem.getActionView();
         }
         if (mSearchView != null) {
             mSearchView.setOnQueryTextListener(this);
@@ -107,13 +103,7 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        CursorLoader cl = new CursorLoader(getActivity());
-        cl.setUri(mUri);
-        return cl;
-    }
 
-    @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
             mAdapter.swapCursor(data);
@@ -135,5 +125,6 @@ abstract public class SearchPagerFragment extends ActionBarFragment implements S
     }
 
     protected abstract FragmentPagerAdapter getPagerAdapter(FragmentManager fm);
+
     protected abstract AbstractRecyclerCursorAdapter getSearchAdapter();
 }
