@@ -12,6 +12,7 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String TABLE_MAINTAIN = "_table_maintain";
     public final static String TABLE_CAR_STATION = "_table_car_station";
     public final static String TABLE_PLUG_STATION = "_table_plug_station";
+    public final static String TABLE_PLUG_REPORT = "_table_plug_report";
 
     public final static String FIELD_LAT = "_lnt";
     public final static String FIELD_LNG = "_lng";
@@ -46,6 +47,12 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String FIELD_PLUG_STATION_ADDRESS = "_plug_address";
     public final static String FIELD_PLUG_STATION_PHOTO = "_car_photo";
 
+    public final static String FIELD_PLUG_STATION_ID = "_plug_station_id";
+    public final static String FIELD_PLUG_USAGE = "_plug_usage";
+    public final static String FIELD_PLUG_REVENUE = "_plug_revenue";
+    public final static String FIELD_TIME = "_time";
+    public final static String FIELD_TIME_UNIT = "_time_unit";
+
     public final static String FIELD_TOTAL = "_total";
     public final static String FIELD_USAGE = "_usage";
 
@@ -56,7 +63,7 @@ public class RoadProProvider extends BaseContentProvider {
     }
 
     private class RoadProDatabase extends SQLiteOpenHelper {
-        private final static int _DBVersion = 5;
+        private final static int _DBVersion = 10;
         private final static String _DBName = "roadpro.db";
 
 
@@ -119,6 +126,15 @@ public class RoadProProvider extends BaseContentProvider {
                     + FIELD_TOTAL + " INTEGER, "
                     + FIELD_USAGE + " INTEGER "
                     + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PLUG_REPORT + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_PLUG_STATION_ID + " INTEGER, "
+                    + FIELD_PLUG_USAGE + " INTEGER, "
+                    + FIELD_PLUG_REVENUE + " TEXT, "
+                    + FIELD_TIME + " INTEGER, "
+                    + FIELD_TIME_UNIT + " TEXT "
+                    + ");");
         }
 
         @Override
@@ -127,6 +143,7 @@ public class RoadProProvider extends BaseContentProvider {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_MAINTAIN);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_CAR_STATION);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLUG_STATION);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLUG_REPORT);
             onCreate(db);
         }
     }

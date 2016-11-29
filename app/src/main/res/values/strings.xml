@@ -8,6 +8,7 @@
 
     <string name="title_time_format">yyyy/MM/dd HH:mm</string>
     <string name="title_time_format_no_hour">yyyy/MM/dd</string>
+    <string name="title_time_mmdd">MM/dd</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -23,12 +23,12 @@ import com.moana.roadpro_manage.base.chart.LineChartFragment;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class UsageCountFragment extends LineChartFragment {
+public class PlugUsageChartFragment extends LineChartFragment {
 
     final CharSequence[] items = { "日", "月", "年" };
     int mSelect = 0;
 
-    public UsageCountFragment() {
+    public PlugUsageChartFragment() {
     }
 
 
@@ -65,10 +65,7 @@ public class UsageCountFragment extends LineChartFragment {
         super.onResume();
         mChart.getXAxis().setValueFormatter(new DayAxisValueFormatter(mChart));
 
-        addLineData(getDummyData(12, 100), "充電樁1");
-        addLineData(getDummyData(12, 100), "充電樁2");
-        addLineData(getDummyData(12, 100), "充電樁3");
-        addLineData(getDummyData(12, 100), "充電樁4");
+        addLineData(getDummyData(12, 100), "充電站Ａ");
 
         draw();
     }

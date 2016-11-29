@@ -65,9 +65,6 @@
             android:text="充電樁管理系統"
             android:textSize="18sp" />
 
-        <include
-            layout="@layout/fragment_maps"
-            android:visibility="gone" />
     </LinearLayout>
 
 </ScrollView>

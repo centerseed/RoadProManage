@@ -31,4 +31,14 @@ public class TimeUtils {
             return 0;
         }
     }
+
+    public static String getMMDD(Context context, long timeStamp) {
+        try {
+            DateFormat sdf = new SimpleDateFormat(context.getResources().getString(R.string.title_time_mmdd));
+            Date netDate = (new Date(timeStamp));
+            return sdf.format(netDate);
+        } catch (Exception ex) {
+            return "";
+        }
+    }
 }

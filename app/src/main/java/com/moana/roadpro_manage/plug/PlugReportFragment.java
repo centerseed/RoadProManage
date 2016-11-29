@@ -1,30 +1,14 @@
 package com.moana.roadpro_manage.plug;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.moana.roadpro_manage.base.BasePagerActivity;
-import com.moana.roadpro_manage.base.ConstantDef;
-import com.moana.roadpro_manage.car.CarMaintainFragment;
+import com.moana.roadpro_manage.base.BasePagerFragment;
+import com.moana.roadpro_manage.car.report.ProperRateFragment;
+import com.moana.roadpro_manage.car.report.RepairRecordFragment;
 
-
-public class PlugReportActivity extends BasePagerActivity {
-
-    String mPlugId;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPlugId = getIntent().getStringExtra(ConstantDef.ARG_STRING);
-    }
-
-    @Override
-    public String getToolbarTitle() {
-        return "充電站報表";
-    }
-
+public class PlugReportFragment extends BasePagerFragment {
     @Override
     protected FragmentPagerAdapter getPagerAdapter(FragmentManager fm) {
         return new SectionsPagerAdapter(fm);
@@ -40,9 +24,9 @@ public class PlugReportActivity extends BasePagerActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new PlugUsageChartFragment();
+                    return new PlugUsageOrderFragment();
                 default:
-                    return CarMaintainFragment.getInstance(mPlugId);
+                    return new ProperRateFragment();
             }
         }
 
@@ -61,5 +45,10 @@ public class PlugReportActivity extends BasePagerActivity {
             }
             return "";
         }
+    }
+
+    @Override
+    protected String getActionBarTitle() {
+        return "充電站綜合報表";
     }
 }

@@ -21,8 +21,11 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     protected AbstractRecyclerCursorAdapter mAdapter;
     protected TextView mTitle;
 
+    boolean isFirstLoad = false;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_recycler, container, false);
     }
 
@@ -53,7 +56,9 @@ public abstract class RecyclerFragment extends ContentFragment implements SwipeR
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
             mAdapter.swapCursor(data);
-            mSwipeRefresh.setRefreshing(false);
+            if (isFirstLoad)
+                mSwipeRefresh.setRefreshing(false);
+            isFirstLoad = true;
         } else {
             mAdapter.swapCursor(null);
         }
