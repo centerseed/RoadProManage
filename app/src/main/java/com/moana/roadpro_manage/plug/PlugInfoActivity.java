@@ -48,7 +48,7 @@ public class PlugInfoActivity extends ContentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_edit, menu);
+        inflater.inflate(R.menu.menu_info, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -58,6 +58,12 @@ public class PlugInfoActivity extends ContentActivity {
 
         if (id == R.id.action_edit) {
             Intent intent = new Intent(this, PlugEditInfoActivity.class);
+            intent.putExtra(ConstantDef.ARG_STRING, mPlugID);
+            startActivity(intent);
+        }
+
+        if (id == R.id.action_report) {
+            Intent intent = new Intent(this, PlugReportActivity.class);
             intent.putExtra(ConstantDef.ARG_STRING, mPlugID);
             startActivity(intent);
         }

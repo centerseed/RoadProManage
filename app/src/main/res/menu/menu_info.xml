@@ -7,4 +7,10 @@
         android:title="order"
         android:icon="@mipmap/ic_assessment_white_24dp"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_edit"
+        android:title="order"
+        android:icon="@mipmap/ic_create_white_24dp"
+        app:showAsAction="always" />
 </menu>

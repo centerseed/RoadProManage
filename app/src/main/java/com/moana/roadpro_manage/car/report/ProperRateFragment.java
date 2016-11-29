@@ -13,6 +13,7 @@ import android.widget.TimePicker;
 
 import com.github.mikephil.charting.data.Entry;
 import com.moana.roadpro_manage.R;
+import com.moana.roadpro_manage.base.chart.DayAxisValueFormatter;
 import com.moana.roadpro_manage.base.chart.LineChartFragment;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class ProperRateFragment extends LineChartFragment {
     @Override
     public void onResume() {
         super.onResume();
+        mChart.getXAxis().setValueFormatter(new DayAxisValueFormatter(mChart));
 
         addLineData(getDummyData(12, 100), "111-00");
         addLineData(getDummyData(12, 100), "111-01");

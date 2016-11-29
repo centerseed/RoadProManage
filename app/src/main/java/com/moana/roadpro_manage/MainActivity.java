@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mItemCarManageReport;
     LinearLayout mItemParkSearch;
     LinearLayout mItemParkManage;
-    LinearLayout mItemparkReport;
+    LinearLayout mItemParkReport;
     LinearLayout mItemPlugActivity;
     LinearLayout mItemPlugManage;
     LinearLayout mItemPlugReport;
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-              //  collapseAllList();
+                // collapseAllList();
                 switch (i) {
                     // Layer 1
                     case R.id.ev_car_manage:
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         mItemCarManageReport = (LinearLayout) headerView.findViewById(R.id.car_manage_report);
         mItemParkSearch = (LinearLayout) headerView.findViewById(R.id.park_search);
         mItemParkManage = (LinearLayout) headerView.findViewById(R.id.park_manage);
-        mItemparkReport = (LinearLayout) headerView.findViewById(R.id.park_report);
+        mItemParkReport = (LinearLayout) headerView.findViewById(R.id.park_report);
         mItemPlugActivity = (LinearLayout) headerView.findViewById(R.id.plug_search);
         mItemPlugManage = (LinearLayout) headerView.findViewById(R.id.plug_manage);
         mItemPlugReport = (LinearLayout) headerView.findViewById(R.id.plug_report);
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
         mItemCarManageReport.setOnClickListener(drawerClickListener);
         mItemParkSearch.setOnClickListener(drawerClickListener);
         mItemParkManage.setOnClickListener(drawerClickListener);
-        mItemparkReport.setOnClickListener(drawerClickListener);
+        mItemParkReport.setOnClickListener(drawerClickListener);
         mItemPlugActivity.setOnClickListener(drawerClickListener);
         mItemPlugManage.setOnClickListener(drawerClickListener);
         mItemPlugReport.setOnClickListener(drawerClickListener);

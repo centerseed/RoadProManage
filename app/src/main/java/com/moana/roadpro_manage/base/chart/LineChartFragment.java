@@ -41,6 +41,13 @@ public class LineChartFragment extends Fragment {
         initChart(view);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mDataSet.clear();
+    }
+
     private void initChart(View view) {
         mChart = (LineChart) view.findViewById(R.id.line_chart);
 
