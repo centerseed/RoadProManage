@@ -17,7 +17,8 @@ public class RentCountAdapter extends AbstractRecyclerCursorAdapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, Cursor cursor) {
-
+        RentViewHolder vh = (RentViewHolder) viewHolder;
+        vh.mRank.setText((cursor.getPosition() + 1) + "");
     }
 
     @Override
@@ -27,10 +28,12 @@ public class RentCountAdapter extends AbstractRecyclerCursorAdapter {
     }
 
     public class RentViewHolder extends RecyclerView.ViewHolder {
-        TextView charge;
+        TextView mRank;
 
         public RentViewHolder(View itemView) {
             super(itemView);
+
+            mRank = (TextView) itemView.findViewById(R.id.rank);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

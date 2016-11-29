@@ -26,6 +26,7 @@
                 android:textColor="@color/colorNavTitle" />
 
             <TextView
+                android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -46,6 +47,7 @@
                 android:scaleType="fitXY"/>
 
             <TextView
+                android:id="@+id/car_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
