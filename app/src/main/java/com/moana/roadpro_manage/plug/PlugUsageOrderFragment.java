@@ -1,29 +1,41 @@
 package com.moana.roadpro_manage.plug;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.DatePicker;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
+import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.RecyclerFragment;
 import com.moana.roadpro_manage.dummy.DummyPlugSource;
-import com.moana.roadpro_manage.park.ParkEditInfoActivity;
+import com.moana.roadpro_manage.utils.PickerUtils;
 
-import java.util.ArrayList;
-
-public class PlugUsageOrderFragment extends RecyclerFragment {
+public class PlugUsageOrderFragment extends RecyclerFragment implements PlugUsageAdapter.PlugUsageListener {
 
     final CharSequence[] items = {"日", "月", "年"};
     int mSelect = 0;
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
+        cl.setSortOrder(RoadProProvider.FIELD_PLUG_USAGE + " DESC");
+        return cl;
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -45,7 +57,9 @@ public class PlugUsageOrderFragment extends RecyclerFragment {
 
     @Override
     protected AbstractRecyclerCursorAdapter getAdapter() {
-        return new PlugUsageAdapter(getContext(), null);
+        PlugUsageAdapter adapter = new PlugUsageAdapter(getContext(), null);
+        adapter.setOnClickListener(this);
+        return adapter;
     }
 
     @Override
@@ -55,8 +69,7 @@ public class PlugUsageOrderFragment extends RecyclerFragment {
             public void run() {
                 ContentResolver resolver = getContext().getContentResolver();
                 resolver.delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
-                ArrayList<ContentValues> values = DummyPlugSource.getPlugDayReportData();
-                for (ContentValues v : values) {
+                for (ContentValues v : DummyPlugSource.getPlugDayReportData(1472688000)) {
                     resolver.insert(mUri, v);
                 }
                 resolver.notifyChange(mUri, null);
@@ -83,9 +96,40 @@ public class PlugUsageOrderFragment extends RecyclerFragment {
                     public void onClick(DialogInterface dialog, int item) {
                         mSelect = item;
                         dialog.dismiss();
+
+                        if (item == 0) {
+                            PickerUtils.showDatePicker(getContext(), new DatePickerDialog.OnDateSetListener() {
+                                @Override
+                                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                                }
+                            });
+                        }
+                        if (item == 1) {
+                            PickerUtils.showMonthPicker(getFragmentManager(), new DatePickerDialog.OnDateSetListener() {
+                                @Override
+                                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+                                }
+                            });
+                        } else if (item == 2) {
+                            PickerUtils.showYearPicker(getContext(), new PickerUtils.YearPickerListener() {
+                                @Override
+                                public void onYearSelected(int year) {
+
+                                }
+                            });
+                        }
                     }
                 });
         Dialog levelDialog = builder.create();
         levelDialog.show();
+    }
+
+    @Override
+    public void onPlugSelected(String id) {
+        Intent intent = new Intent(getActivity(), PlugReportActivity.class);
+        intent.putExtra(ConstantDef.ARG_STRING, id);
+        startActivity(intent);
     }
 }

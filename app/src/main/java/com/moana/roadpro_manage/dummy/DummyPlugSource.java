@@ -7,13 +7,12 @@ import com.moana.roadpro_manage.RoadProProvider;
 import java.util.ArrayList;
 
 public class DummyPlugSource {
-    public static ArrayList<ContentValues> getPlugDayReportData() {
+    public static ArrayList<ContentValues> getPlugDayReportData(long time) {
         ArrayList<ContentValues> values = new ArrayList<>();
 
         ContentValues value = new ContentValues();
         String id = "plug1";
         String unit = "day";
-        long time = 1472688000;
 
         value.put(RoadProProvider.FIELD_ID, (id + time + unit).hashCode());
         value.put(RoadProProvider.FIELD_PLUG_STATION_ID, id.hashCode());

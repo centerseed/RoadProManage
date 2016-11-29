@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
@@ -14,16 +13,23 @@ import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.utils.TimeUtils;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 
 public class PlugUsageAdapter extends AbstractRecyclerCursorAdapter {
 
     Uri mPlugUri;
+    PlugUsageListener mListener;
+
+    public interface PlugUsageListener {
+        void onPlugSelected(String id);
+    }
 
     public PlugUsageAdapter(Context context, Cursor c) {
         super(context, c);
         mPlugUri = RoadProProvider.getProviderUri(context.getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
+    }
+
+    public void setOnClickListener(PlugUsageListener listener) {
+        mListener = listener;
     }
 
     @Override
@@ -39,6 +45,7 @@ public class PlugUsageAdapter extends AbstractRecyclerCursorAdapter {
 
         vh.mUsage.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_PLUG_USAGE)));
         vh.mTime.setText(TimeUtils.getMMDD(m_context, cursor.getLong(cursor.getColumnIndex(RoadProProvider.FIELD_TIME)) * 1000));
+        vh.mRank.setText((cursor.getPosition() + 1) + "");
     }
 
     @Override
@@ -52,6 +59,7 @@ public class PlugUsageAdapter extends AbstractRecyclerCursorAdapter {
         TextView mName;
         TextView mUsage;
         TextView mTime;
+        TextView mRank;
 
         public PlugViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +67,17 @@ public class PlugUsageAdapter extends AbstractRecyclerCursorAdapter {
             mName = (TextView) itemView.findViewById(R.id.name);
             mUsage = (TextView) itemView.findViewById(R.id.usage);
             mTime = (TextView) itemView.findViewById(R.id.time);
+            mRank = (TextView) itemView.findViewById(R.id.rank);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null) {
+                        Cursor cursor = (Cursor) getItem(getAdapterPosition());
+                        mListener.onPlugSelected(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));
+                    }
+                }
+            });
         }
     }
 }
