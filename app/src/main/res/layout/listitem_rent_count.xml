@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="65dp"
-    android:orientation="horizontal"
     android:background="@color/colorLightBlue"
+    android:orientation="horizontal"
     android:padding="8dp">
 
     <FrameLayout
@@ -30,6 +30,7 @@
     </FrameLayout>
 
     <TextView
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -40,6 +41,7 @@
         android:textStyle="normal|bold" />
 
     <TextView
+        android:id="@+id/count"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

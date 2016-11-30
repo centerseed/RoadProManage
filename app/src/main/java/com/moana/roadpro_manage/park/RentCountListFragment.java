@@ -1,8 +1,14 @@
 package com.moana.roadpro_manage.park;
 
 import android.app.Dialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +18,9 @@ import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.RecyclerFragment;
+import com.moana.roadpro_manage.dummy.DummyParkSource;
+
+import java.util.ArrayList;
 
 public class RentCountListFragment extends RecyclerFragment {
 
@@ -41,13 +50,26 @@ public class RentCountListFragment extends RecyclerFragment {
 
     @Override
     protected void onSync() {
+        ContentResolver resolver = getContext().getContentResolver();
+        ArrayList<ContentValues> values = DummyParkSource.getParkDayReportData(1472688000);
+        for (ContentValues v : values) {
+            resolver.insert(mUri, v);
+        }
+        resolver.notifyChange(mUri, null);
         enableRefresh(false);
     }
 
     @Override
     protected Uri getProviderUri() {
         // use other table for dummy data
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_REPORT);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
+        cl.setSortOrder(RoadProProvider.FIELD_CAR_REPORT_RENT_COUNT + " DESC");
+        return cl;
     }
 
     @Override

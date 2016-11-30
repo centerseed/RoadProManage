@@ -11,6 +11,8 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String TABLE_CAR = "_table_car";
     public final static String TABLE_MAINTAIN = "_table_maintain";
     public final static String TABLE_CAR_STATION = "_table_car_station";
+    public final static String TABLE_CAR_REPORT = "_table_car_report";
+    public final static String TABLE_CAR_REVENUE = "_table_car_revenue";
     public final static String TABLE_PLUG_STATION = "_table_plug_station";
     public final static String TABLE_PLUG_REPORT = "_table_plug_report";
     public final static String TABLE_PLUG_REVENUE = "_table_plug_revenue";
@@ -44,6 +46,15 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String FIELD_CAR_STATION_ADDRESS = "_car_address";
     public final static String FIELD_CAR_STATION_PHOTO = "_car_photo";
 
+    public final static String FIELD_CAR_STATION_ID = "_car_station_id";
+    public final static String FIELD_CAR_REPORT_RENT_COUNT = "_car_report_rent_count";
+    public final static String FIELD_CAR_REPORT_TURNOVER = "_car_report_turnover";
+
+    public final static String FIELD_CAR_REVENUE_RENT_INCOME = "_plug_revenue_rent_income";
+    public final static String FIELD_CAR_REVENUE_OTHER_INCOME = "_plug_revenue_other_income";
+    public final static String FIELD_CAR_REVENUE_NET = "_plug_revenue_net";
+    public final static String FIELD_CAR_REVENUE_DATE = "_plug_revenue_income";
+
     public final static String FIELD_PLUG_STATION_NAME = "_plug_name";
     public final static String FIELD_PLUG_STATION_ADDRESS = "_plug_address";
     public final static String FIELD_PLUG_STATION_PHOTO = "_car_photo";
@@ -68,7 +79,7 @@ public class RoadProProvider extends BaseContentProvider {
     }
 
     private class RoadProDatabase extends SQLiteOpenHelper {
-        private final static int _DBVersion = 11;
+        private final static int _DBVersion = 12;
         private final static String _DBName = "roadpro.db";
 
 
@@ -119,6 +130,24 @@ public class RoadProProvider extends BaseContentProvider {
                     + FIELD_LNG + " TEXT, "
                     + FIELD_TOTAL + " INTEGER, "
                     + FIELD_USAGE + " INTEGER "
+                    + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CAR_REPORT + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_CAR_STATION_ID + " INTEGER, "
+                    + FIELD_CAR_REPORT_TURNOVER + " INTEGER, "
+                    + FIELD_CAR_REPORT_RENT_COUNT + " INTEGER, "
+                    + FIELD_TIME + " INTEGER, "
+                    + FIELD_TIME_UNIT + " TEXT "
+                    + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CAR_REVENUE + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_CAR_STATION_ID + " INTEGER, "
+                    + FIELD_CAR_REVENUE_RENT_INCOME + " FLOAT, "
+                    + FIELD_CAR_REVENUE_OTHER_INCOME + " FLOAT, "
+                    + FIELD_CAR_REVENUE_DATE + " FLOAT, "
+                    + FIELD_CAR_REVENUE_NET + " FLOAT "
                     + ");");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PLUG_STATION + " ( "
