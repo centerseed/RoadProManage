@@ -22,10 +22,11 @@ import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.RecyclerFragment;
+import com.moana.roadpro_manage.base.RecyclerHeaderFragment;
 import com.moana.roadpro_manage.dummy.DummyPlugSource;
 import com.moana.roadpro_manage.utils.PickerUtils;
 
-public class PlugUsageOrderFragment extends RecyclerFragment implements PlugUsageAdapter.PlugUsageListener {
+public class PlugUsageListFragment extends RecyclerHeaderFragment implements PlugUsageAdapter.PlugUsageListener {
 
     final CharSequence[] items = {"日", "月", "年"};
     int mSelect = 0;
@@ -76,6 +77,11 @@ public class PlugUsageOrderFragment extends RecyclerFragment implements PlugUsag
                 resolver.notifyChange(mUri, null);
             }
         }, 1000);
+    }
+
+    @Override
+    protected int getHeaderResID() {
+        return R.layout.listitem_plug_usage_header;
     }
 
     @Override

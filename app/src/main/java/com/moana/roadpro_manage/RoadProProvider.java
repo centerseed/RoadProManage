@@ -13,6 +13,7 @@ public class RoadProProvider extends BaseContentProvider {
     public final static String TABLE_CAR_STATION = "_table_car_station";
     public final static String TABLE_PLUG_STATION = "_table_plug_station";
     public final static String TABLE_PLUG_REPORT = "_table_plug_report";
+    public final static String TABLE_PLUG_REVENUE = "_table_plug_revenue";
 
     public final static String FIELD_LAT = "_lnt";
     public final static String FIELD_LNG = "_lng";
@@ -49,9 +50,13 @@ public class RoadProProvider extends BaseContentProvider {
 
     public final static String FIELD_PLUG_STATION_ID = "_plug_station_id";
     public final static String FIELD_PLUG_USAGE = "_plug_usage";
-    public final static String FIELD_PLUG_REVENUE = "_plug_revenue";
     public final static String FIELD_TIME = "_time";
     public final static String FIELD_TIME_UNIT = "_time_unit";
+
+    public final static String FIELD_PLUG_REVENUE_RENT_INCOME = "_plug_revenue_rent_income";
+    public final static String FIELD_PLUG_REVENUE_OTHER_INCOME = "_plug_revenue_other_income";
+    public final static String FIELD_PLUG_REVENUE_NET = "_plug_revenue_net";
+    public final static String FIELD_PLUG_REVENUE_DATE = "_plug_revenue_income";
 
     public final static String FIELD_TOTAL = "_total";
     public final static String FIELD_USAGE = "_usage";
@@ -63,7 +68,7 @@ public class RoadProProvider extends BaseContentProvider {
     }
 
     private class RoadProDatabase extends SQLiteOpenHelper {
-        private final static int _DBVersion = 10;
+        private final static int _DBVersion = 11;
         private final static String _DBName = "roadpro.db";
 
 
@@ -131,9 +136,17 @@ public class RoadProProvider extends BaseContentProvider {
                     + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + FIELD_PLUG_STATION_ID + " INTEGER, "
                     + FIELD_PLUG_USAGE + " INTEGER, "
-                    + FIELD_PLUG_REVENUE + " TEXT, "
                     + FIELD_TIME + " INTEGER, "
                     + FIELD_TIME_UNIT + " TEXT "
+                    + ");");
+
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_PLUG_REVENUE + " ( "
+                    + FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + FIELD_PLUG_STATION_ID + " INTEGER, "
+                    + FIELD_PLUG_REVENUE_RENT_INCOME + " FLOAT, "
+                    + FIELD_PLUG_REVENUE_OTHER_INCOME + " FLOAT, "
+                    + FIELD_PLUG_REVENUE_DATE + " FLOAT, "
+                    + FIELD_PLUG_REVENUE_NET + " FLOAT "
                     + ");");
         }
 

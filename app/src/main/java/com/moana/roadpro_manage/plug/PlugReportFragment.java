@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.moana.roadpro_manage.base.BasePagerFragment;
 import com.moana.roadpro_manage.car.report.ProperRateFragment;
-import com.moana.roadpro_manage.car.report.RepairRecordFragment;
 
 public class PlugReportFragment extends BasePagerFragment {
     @Override
@@ -24,9 +23,9 @@ public class PlugReportFragment extends BasePagerFragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new PlugUsageOrderFragment();
+                    return new PlugUsageListFragment();
                 default:
-                    return new ProperRateFragment();
+                    return new PlugRevenueListFragment();
             }
         }
 

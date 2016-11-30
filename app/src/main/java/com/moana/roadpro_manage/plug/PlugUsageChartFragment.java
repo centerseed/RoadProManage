@@ -1,7 +1,6 @@
 package com.moana.roadpro_manage.plug;
 
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,20 +11,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.EditText;
 
-import com.github.mikephil.charting.data.Entry;
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.base.chart.DayAxisValueFormatter;
 import com.moana.roadpro_manage.base.chart.LineChartFragment;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import static com.moana.roadpro_manage.dummy.Dummy.getDummyData;
 
 public class PlugUsageChartFragment extends LineChartFragment {
 
-    final CharSequence[] items = { "日", "月", "年" };
+    final CharSequence[] items = {"日", "月", "年"};
     int mSelect = 0;
 
     public PlugUsageChartFragment() {
@@ -47,7 +42,7 @@ public class PlugUsageChartFragment extends LineChartFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_date, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -66,19 +61,9 @@ public class PlugUsageChartFragment extends LineChartFragment {
         mChart.getXAxis().setValueFormatter(new DayAxisValueFormatter(mChart));
 
         addLineData(getDummyData(12, 100), "充電站Ａ");
-
         draw();
     }
 
-    private ArrayList<Entry> getDummyData(int count, int range) {
-        ArrayList<Entry> values = new ArrayList<Entry>();
-
-        for (int i = 0; i < count; i++) {
-            int val = (int) (Math.random() * range);
-            values.add(new Entry(i, val));
-        }
-        return values;
-    }
 
     private void showSelectedDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
