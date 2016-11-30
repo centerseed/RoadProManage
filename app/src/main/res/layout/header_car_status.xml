@@ -43,12 +43,13 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/driver_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="王大明"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <ImageView
             app:srcCompat="@color/colorNavTitle"
@@ -64,12 +65,13 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/battery_temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="50度"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,12 +89,15 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/mileage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="3000"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:lines="1"
+            android:ellipsize="end"
+            android:textSize="16sp" />
 
         <ImageView
             app:srcCompat="@color/colorNavTitle"
@@ -108,12 +113,13 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/voltage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="120V"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -131,12 +137,13 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/soc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="90"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <ImageView
             app:srcCompat="@color/colorNavTitle"
@@ -152,12 +159,13 @@
             android:textColor="@color/colorSubTitle" />
 
         <TextView
+            android:id="@+id/single_voltage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="120V"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

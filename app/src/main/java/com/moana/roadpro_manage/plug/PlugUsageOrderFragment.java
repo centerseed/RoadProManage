@@ -72,6 +72,7 @@ public class PlugUsageOrderFragment extends RecyclerFragment implements PlugUsag
                 for (ContentValues v : DummyPlugSource.getPlugDayReportData(1472688000)) {
                     resolver.insert(mUri, v);
                 }
+                enableRefresh(false);
                 resolver.notifyChange(mUri, null);
             }
         }, 1000);
