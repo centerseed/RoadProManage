@@ -26,6 +26,8 @@ public class ParkReportFragment extends BasePagerFragment {
                     return new RentCountListFragment();
                 case 1:
                     return new TurnoverFragment();
+                case 3:
+                    return new ParkRevenueListFragment();
                 default:
                     return new UseCountChartFragment();
             }
@@ -33,7 +35,7 @@ public class ParkReportFragment extends BasePagerFragment {
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Override
@@ -45,6 +47,8 @@ public class ParkReportFragment extends BasePagerFragment {
                     return "週轉率";
                 case 2:
                     return "使用車次";
+                case 3:
+                    return "營收報表";
             }
             return "";
         }

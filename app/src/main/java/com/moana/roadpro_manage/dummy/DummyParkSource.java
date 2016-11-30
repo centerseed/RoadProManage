@@ -28,22 +28,22 @@ public class DummyParkSource {
         return values;
     }
 
-    public static ArrayList<ContentValues> getPlugRevenueReportData(long time) {
+    public static ArrayList<ContentValues> getParkRevenueReportData(long time) {
         ArrayList<ContentValues> values = new ArrayList<>();
 
         String unit = "day";
 
-        for (int i = 1; i < 11; i++) {
-            String id = "plug" + i;
+        for (int i = 1; i < 10; i++) {
+            String id = "rent" + i;
             ContentValues value = new ContentValues();
             int rent = Dummy.getRandomInt(1000, 3000);
             int other = Dummy.getRandomInt(700, 2000);
             value.put(RoadProProvider.FIELD_ID, (id + time + unit).hashCode());
-            value.put(RoadProProvider.FIELD_PLUG_STATION_ID, id.hashCode());
-            value.put(RoadProProvider.FIELD_PLUG_REVENUE_RENT_INCOME, rent);
-            value.put(RoadProProvider.FIELD_PLUG_REVENUE_OTHER_INCOME, other);
-            value.put(RoadProProvider.FIELD_PLUG_REVENUE_DATE, i);
-            value.put(RoadProProvider.FIELD_PLUG_REVENUE_NET, rent + other);
+            value.put(RoadProProvider.FIELD_CAR_STATION_ID, id.hashCode());
+            value.put(RoadProProvider.FIELD_CAR_REVENUE_RENT_INCOME, rent);
+            value.put(RoadProProvider.FIELD_CAR_REVENUE_OTHER_INCOME, other);
+            value.put(RoadProProvider.FIELD_CAR_REVENUE_DATE, i);
+            value.put(RoadProProvider.FIELD_CAR_REVENUE_NET, rent + other);
             values.add(value);
         }
 
