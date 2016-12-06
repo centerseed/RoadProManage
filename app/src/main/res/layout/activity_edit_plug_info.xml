@@ -1,66 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_park_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorLightBlue"
-    android:orientation="vertical"
-    tools:context="com.moana.roadpro_manage.park.ParkInfoActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/park_img"
+    <LinearLayout
+        android:id="@+id/activity_park_info"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBlue"
+        android:orientation="vertical"
+        tools:context="com.moana.roadpro_manage.park.ParkInfoActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="編號" />
+        <ImageView
+            android:id="@+id/park_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@android:color/white"
-        android:padding="8dp"
-        android:hint="例：A12345"
-        android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="編號" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="站名" />
+        <EditText
+            android:id="@+id/serial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@android:color/white"
+            android:hint="例：A12345"
+            android:padding="8dp"
+            android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@android:color/white"
-        android:padding="8dp"
-        android:hint="例：朝馬站"
-        android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="站名" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="地址" />
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@android:color/white"
+            android:hint="例：朝馬站"
+            android:padding="8dp"
+            android:textSize="18sp" />
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@android:color/white"
-        android:padding="8dp"
-        android:hint="例：台灣大道三段"
-        android:textSize="18sp" />
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="地址" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@android:color/white"
+            android:hint="例：台灣大道三段"
+            android:padding="8dp"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>

@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class ParkListFragment extends FunctionRecyclerFragment implements ParkAdapter.ParkClickListener {
 
+    boolean isDelete = false;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -43,6 +45,7 @@ public class ParkListFragment extends FunctionRecyclerFragment implements ParkAd
                 startActivity(intent);
                 break;
             case R.id.action_delete:
+                isDelete = !isDelete;
                 ((ParkAdapter) mAdapter).toggleDelete();
                 break;
         }

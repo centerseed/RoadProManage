@@ -23,6 +23,7 @@ public class ParkEditInfoActivity extends ContentActivity {
     ImageView mPark;
     EditText mName;
     EditText mAddress;
+    EditText mSerial;
     String mParkID;
     int mParkId = 0;
 
@@ -35,10 +36,12 @@ public class ParkEditInfoActivity extends ContentActivity {
 
         mParkID = getIntent().getStringExtra(ConstantDef.ARG_STRING);
 
+        mSerial = (EditText) findViewById(R.id.serial);
         if (mParkID == null) {
             getSupportActionBar().setTitle("新增停車場");
         } else {
             getSupportActionBar().setTitle("修改停車場資訊");
+            mSerial.setEnabled(false);
         }
 
         mPark = (ImageView) findViewById(R.id.park_img);

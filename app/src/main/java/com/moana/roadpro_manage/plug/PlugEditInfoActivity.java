@@ -1,5 +1,6 @@
 package com.moana.roadpro_manage.plug;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ public class PlugEditInfoActivity extends ContentActivity {
     ImageView mPark;
     EditText mName;
     EditText mAddress;
+    EditText mSerial;
     String mPlugID;
+    int mPlugId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,13 @@ public class PlugEditInfoActivity extends ContentActivity {
 
         mPlugID = getIntent().getStringExtra(ConstantDef.ARG_STRING);
 
+        mSerial = (EditText) findViewById(R.id.serial);
+
         if (mPlugID == null) {
             getSupportActionBar().setTitle("新增充電樁");
         } else {
             getSupportActionBar().setTitle("修改充電樁資訊");
+            mSerial.setEnabled(false);
         }
 
         mPark = (ImageView) findViewById(R.id.park_img);
@@ -45,7 +51,7 @@ public class PlugEditInfoActivity extends ContentActivity {
 
     @Override
     protected Uri getProviderUri() {
-        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
+        return RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
     }
 
     @Override
@@ -60,7 +66,8 @@ public class PlugEditInfoActivity extends ContentActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_done) {
-            // TODO: add park here
+            savePlugInfo();
+            finish();
         }
 
         if (id == android.R.id.home) {
@@ -84,17 +91,32 @@ public class PlugEditInfoActivity extends ContentActivity {
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-            String url = data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_PHOTO));
+            String url = data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_PHOTO));
             if (url != null && url.length() > 0)
                 Picasso.with(this).load(url).into(mPark);
 
-            mName.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_NAME)));
-            mAddress.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_ADDRESS)));
+            mName.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_NAME)));
+            mAddress.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_PLUG_STATION_ADDRESS)));
+
+            mPlugId = data.getInt(data.getColumnIndex(RoadProProvider.FIELD_ID));
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    private void savePlugInfo() {
+        ContentValues values = new ContentValues();
+        if (mPlugId != 0)
+            values.put(RoadProProvider.FIELD_ID, mPlugId);
+        else
+            values.put(RoadProProvider.FIELD_ID, mName.getText().toString().hashCode());
+        values.put(RoadProProvider.FIELD_PLUG_STATION_NAME, mName.getText().toString());
+        values.put(RoadProProvider.FIELD_PLUG_STATION_ADDRESS, mAddress.getText().toString());
+
+        getContentResolver().insert(mUri, values);
+        getContentResolver().notifyChange(mUri, null);
     }
 }
