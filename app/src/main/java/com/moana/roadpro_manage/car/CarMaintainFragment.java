@@ -15,7 +15,7 @@ import com.moana.roadpro_manage.RoadProProvider;
 import com.moana.roadpro_manage.base.AbstractRecyclerCursorAdapter;
 import com.moana.roadpro_manage.base.ConstantDef;
 import com.moana.roadpro_manage.base.RecyclerFragment;
-import com.moana.roadpro_manage.dummy.DummyMaintainSource;
+import com.moana.roadpro_manage.dummy.DummyCuringSource;
 
 import java.util.ArrayList;
 
@@ -37,18 +37,6 @@ public class CarMaintainFragment extends RecyclerFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
-
-        ArrayList<ContentValues> values = DummyMaintainSource.getMaintainData();
-        for (ContentValues v : values) {
-            getContext().getContentResolver().insert(mUri, v);
-        }
-        getContext().getContentResolver().notifyChange(mUri, null);
-    }
-
-    @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
         cl.setSelection(RoadProProvider.FIELD_CAR_NO + "=?");
@@ -63,6 +51,13 @@ public class CarMaintainFragment extends RecyclerFragment {
 
     @Override
     protected void onSync() {
+
+        ArrayList<ContentValues> values = DummyCuringSource.getMaintainData();
+        for (ContentValues v : values) {
+            getContext().getContentResolver().insert(mUri, v);
+        }
+
+        getContext().getContentResolver().notifyChange(mUri, null);
         enableRefresh(false);
     }
 

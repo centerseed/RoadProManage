@@ -24,7 +24,7 @@ public class DummyCarSource {
         value.put(RoadProProvider.FIELD_CAR_MAINTAIN_DATE, "2016/10");
         value.put(RoadProProvider.FIELD_CAR_NO, carNO);
         value.put(RoadProProvider.FIELD_CAR_OWNER, "路得寶交通");
-        value.put(RoadProProvider.FIELD_CAR_MILEAGE, "2000KM");
+        value.put(RoadProProvider.FIELD_CAR_MILEAGE, "2000");
         value.put(RoadProProvider.FIELD_CAR_SOC, "90");
         value.put(RoadProProvider.FIELD_CAR_VOLTAGE, "120V");
         value.put(RoadProProvider.FIELD_CAR_SINGLE_VOLTAGE, "120V");
@@ -47,7 +47,7 @@ public class DummyCarSource {
         value.put(RoadProProvider.FIELD_CAR_MAINTAIN_DATE, "2016/11");
         value.put(RoadProProvider.FIELD_CAR_NO, carNO);
         value.put(RoadProProvider.FIELD_CAR_OWNER, "路得寶交通");
-        value.put(RoadProProvider.FIELD_CAR_MILEAGE, "10134KM");
+        value.put(RoadProProvider.FIELD_CAR_MILEAGE, "10134");
         value.put(RoadProProvider.FIELD_CAR_SOC, "92");
         value.put(RoadProProvider.FIELD_CAR_VOLTAGE, "120V");
         value.put(RoadProProvider.FIELD_CAR_SINGLE_VOLTAGE, "120V");

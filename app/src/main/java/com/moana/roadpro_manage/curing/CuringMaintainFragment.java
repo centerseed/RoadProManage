@@ -15,7 +15,7 @@ import com.moana.roadpro_manage.dummy.DummyCuringSource;
 
 import java.util.ArrayList;
 
-public class CuringRepairFragment extends RecyclerFragment {
+public class CuringMaintainFragment extends RecyclerFragment {
     @Override
     protected AbstractRecyclerCursorAdapter getAdapter() {
         return new CuringAdapter(getContext(), null);
@@ -27,7 +27,7 @@ public class CuringRepairFragment extends RecyclerFragment {
 
             @Override
             public void run() {
-                ArrayList<ContentValues> values = DummyCuringSource.getRepairData();
+                ArrayList<ContentValues> values = DummyCuringSource.getMaintainData();
                 for (ContentValues v : values) {
                     getContext().getContentResolver().insert(mUri, v);
                 }
@@ -42,7 +42,7 @@ public class CuringRepairFragment extends RecyclerFragment {
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
         cl.setSelection(RoadProProvider.FIELD_MAINTAIN_ITEM + "=?");
-        cl.setSelectionArgs(new String[]{"repair"});
+        cl.setSelectionArgs(new String[]{"maintain"});
         return cl;
     }
 

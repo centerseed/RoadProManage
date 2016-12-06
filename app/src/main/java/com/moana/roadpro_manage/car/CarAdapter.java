@@ -24,6 +24,7 @@ public class CarAdapter extends AbstractRecyclerCursorAdapter {
 
         vh.mCarNo.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_NO)));
         vh.mYear.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_FACTORY_YEAR)));
+        vh.mMileage.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_MILEAGE)));
     }
 
     @Override
@@ -35,12 +36,14 @@ public class CarAdapter extends AbstractRecyclerCursorAdapter {
     public class CarViewHolder extends RecyclerView.ViewHolder {
         TextView mCarNo;
         TextView mYear;
+        TextView mMileage;
 
         public CarViewHolder(View itemView) {
             super(itemView);
 
             mCarNo = (TextView) itemView.findViewById(R.id.car_id);
             mYear = (TextView) itemView.findViewById(R.id.year);
+            mMileage = (TextView) itemView.findViewById(R.id.mileage);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -32,8 +32,10 @@ public class CuringFragment extends BasePagerFragment {
             switch (position) {
                 case 0:
                     return new CuringRepairFragment();
+                case 1:
+                    return new CuringMaintainFragment();
                 default:
-                    return new CuringRepairFragment();
+                    return new CuringCleanFragment();
             }
         }
 
