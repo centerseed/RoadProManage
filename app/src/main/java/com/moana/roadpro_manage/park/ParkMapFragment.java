@@ -34,10 +34,10 @@ public class ParkMapFragment extends BroadcastMap implements OnMapReadyCallback 
     @Override
     public void onResume() {
         super.onResume();
-        ArrayList<ContentValues> values = DummyStationSource.getParkList();
+       /* ArrayList<ContentValues> values = DummyStationSource.getParkList();
         for (ContentValues v : values)
             getContext().getContentResolver().insert(mUri, v);
-
+*/
         getContext().getContentResolver().notifyChange(mUri, null);
     }
 

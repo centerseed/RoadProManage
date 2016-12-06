@@ -27,12 +27,12 @@ public class PlugMapFragment extends ContentMapFragment implements OnMapReadyCal
     public void onResume() {
         super.onResume();
 
-        getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
+      /*  getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
 
         ArrayList<ContentValues> list = DummyStationSource.getPlugList();
         for (ContentValues values : list) {
             getContext().getContentResolver().insert(mUri, values);
-        }
+        }*/
         getContext().getContentResolver().notifyChange(mUri, null);
     }
 

@@ -23,12 +23,11 @@ public class CarListFragment extends RecyclerFragment {
         mRecycler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
-
+            /*
                 ArrayList<ContentValues> values = DummyCarSource.getCarData();
                 for (ContentValues v : values)
                     getContext().getContentResolver().insert(mUri, v);
-
+*/
                 getContext().getContentResolver().notifyChange(mUri, null);
                 enableRefresh(false);
             }

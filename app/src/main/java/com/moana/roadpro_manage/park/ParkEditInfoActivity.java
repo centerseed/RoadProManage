@@ -1,5 +1,6 @@
 package com.moana.roadpro_manage.park;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.moana.roadpro_manage.R;
 import com.moana.roadpro_manage.RoadProProvider;
@@ -24,6 +24,7 @@ public class ParkEditInfoActivity extends ContentActivity {
     EditText mName;
     EditText mAddress;
     String mParkID;
+    int mParkId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class ParkEditInfoActivity extends ContentActivity {
 
         if (id == R.id.action_done) {
             // TODO: add park here
+            saveParkInfo();
+            finish();
         }
 
         if (id == android.R.id.home) {
@@ -92,11 +95,25 @@ public class ParkEditInfoActivity extends ContentActivity {
 
             mName.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_NAME)));
             mAddress.setText(data.getString(data.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_ADDRESS)));
+            mParkId = data.getInt(data.getColumnIndex(RoadProProvider.FIELD_ID));
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    private void saveParkInfo() {
+        ContentValues values = new ContentValues();
+        if (mParkId != 0)
+            values.put(RoadProProvider.FIELD_ID, mParkId);
+        else
+            values.put(RoadProProvider.FIELD_ID, mName.getText().toString().hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, mName.getText().toString());
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, mAddress.getText().toString());
+
+        getContentResolver().insert(mUri, values);
+        getContentResolver().notifyChange(mUri, null);
     }
 }

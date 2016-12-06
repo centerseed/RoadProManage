@@ -62,12 +62,12 @@ public class ParkListFragment extends FunctionRecyclerFragment implements ParkAd
     @Override
     protected void onSync() {
         // Skip parser
-        getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
+        /* getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
 
         ArrayList<ContentValues> values = DummyStationSource.getParkList();
         for (ContentValues v : values)
             getContext().getContentResolver().insert(mUri, v);
-
+*/
         getContext().getContentResolver().notifyChange(mUri, null);
         enableRefresh(false);
     }
