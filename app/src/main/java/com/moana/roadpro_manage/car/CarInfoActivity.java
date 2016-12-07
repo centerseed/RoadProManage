@@ -40,6 +40,8 @@ public class CarInfoActivity extends BasePagerActivity {
             switch (position) {
                 case 0:
                     return CarBasicFragment.getInstance(mCarNo);
+                case 1:
+                    return CarRepairFragment.getInstance(mCarNo);
                 default:
                     return CarMaintainFragment.getInstance(mCarNo);
             }

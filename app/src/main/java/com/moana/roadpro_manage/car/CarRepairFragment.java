@@ -19,7 +19,7 @@ import com.moana.roadpro_manage.dummy.DummyCuringSource;
 
 import java.util.ArrayList;
 
-public class CarMaintainFragment extends RecyclerFragment {
+public class CarRepairFragment extends RecyclerFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,11 +27,11 @@ public class CarMaintainFragment extends RecyclerFragment {
         return inflater.inflate(R.layout.fragment_recycler, container, false);
     }
 
-    public static CarMaintainFragment getInstance(String carNo) {
+    public static CarRepairFragment getInstance(String carNo) {
         Bundle bundle = new Bundle();
         bundle.putString(ConstantDef.ARG_STRING, carNo);
 
-        CarMaintainFragment f = new CarMaintainFragment();
+        CarRepairFragment f = new CarRepairFragment();
         f.setArguments(bundle);
         return f;
     }
@@ -39,7 +39,7 @@ public class CarMaintainFragment extends RecyclerFragment {
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cl = (CursorLoader) super.onCreateLoader(id, args);
-        cl.setSelection(RoadProProvider.FIELD_CAR_NO + "=? AND " + RoadProProvider.FIELD_MAINTAIN_ITEM + "!=?");
+        cl.setSelection(RoadProProvider.FIELD_CAR_NO + "=? AND " + RoadProProvider.FIELD_MAINTAIN_ITEM + "=?");
         cl.setSelectionArgs(new String[]{getCarNo(), "repair"});
         return cl;
     }

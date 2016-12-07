@@ -15,6 +15,7 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -52,6 +53,7 @@
                     android:layout_gravity="center_vertical">
 
                     <TextView
+                        android:id="@+id/mileage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4023"
@@ -104,6 +106,7 @@
                 android:textColor="@color/colorNavTitle" />
 
             <TextView
+                android:id="@+id/reason"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
@@ -127,6 +130,7 @@
                 android:textColor="@color/colorNavTitle" />
 
             <TextView
+                android:id="@+id/repair_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
