@@ -18,7 +18,7 @@ public class CarReportFragment extends BasePagerFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_report, menu);
+        // inflater.inflate(R.menu.menu_report, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
 
