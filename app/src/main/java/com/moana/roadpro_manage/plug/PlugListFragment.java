@@ -56,9 +56,9 @@ public class PlugListFragment extends FunctionRecyclerFragment implements PlugAd
         // Skip parser
         // getContext().getContentResolver().delete(mUri, RoadProProvider.FIELD_ID + "!=?", new String[]{"0"});
 
-       /* ArrayList<ContentValues> values = DummyStationSource.getPlugList();
+        ArrayList<ContentValues> values = DummyStationSource.getPlugList();
         for (ContentValues v : values)
-            getContext().getContentResolver().insert(mUri, v); */
+            getContext().getContentResolver().insert(mUri, v);
 
         getContext().getContentResolver().notifyChange(mUri, null);
         enableRefresh(false);

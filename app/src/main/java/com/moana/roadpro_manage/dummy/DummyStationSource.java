@@ -118,6 +118,17 @@ public class DummyStationSource {
         values.put(RoadProProvider.FIELD_TOTAL, 10);
         arrayList.add(values);
 
+        // Dummy 10
+        values = new ContentValues();
+        values.put(RoadProProvider.FIELD_ID, "rent10".hashCode());
+        values.put(RoadProProvider.FIELD_CAR_STATION_NAME, "三多商圈站");
+        values.put(RoadProProvider.FIELD_CAR_STATION_ADDRESS, "高雄市前鎮區中山二路268號");
+        values.put(RoadProProvider.FIELD_LAT, 22.613955);
+        values.put(RoadProProvider.FIELD_LNG, 120.304504);
+        values.put(RoadProProvider.FIELD_CAR_STATION_PHOTO, "http://pic.pimg.tw/ice2006/1197262071.jpg");
+        values.put(RoadProProvider.FIELD_TOTAL, 10);
+        arrayList.add(values);
+
         return arrayList;
     }
 

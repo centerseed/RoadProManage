@@ -20,10 +20,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
-import com.moana.roadpro_manage.curing.CuringFragment;
 import com.moana.roadpro_manage.car.CarListFragment;
 import com.moana.roadpro_manage.car.CarStatusFragment;
 import com.moana.roadpro_manage.car.report.CarReportFragment;
+import com.moana.roadpro_manage.curing.CuringFragment;
 import com.moana.roadpro_manage.dummy.DummyCarSource;
 import com.moana.roadpro_manage.dummy.DummyStationSource;
 import com.moana.roadpro_manage.park.ParkFragment;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (getSupportFragmentManager().findFragmentByTag("home") != null)
-            super.onBackPressed();
+                super.onBackPressed();
             else {
                 mToolbar.setNavigationIcon(R.mipmap.ic_menu_black_24dp);
                 mToolbar.setBackgroundColor(Color.TRANSPARENT);
@@ -229,27 +229,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void dummySync() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Uri parkUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
-                getContentResolver().delete(parkUri, RoadProProvider.FIELD_ID + "!=0", null);
-                ArrayList<ContentValues> values = DummyStationSource.getParkList();
-                for (ContentValues v : values)
-                    getContentResolver().insert(parkUri, v);
+        Uri parkUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR_STATION);
+        getContentResolver().delete(parkUri, RoadProProvider.FIELD_ID + "!=0", null);
+        ArrayList<ContentValues> values = DummyStationSource.getParkList();
+        for (ContentValues v : values)
+            getContentResolver().insert(parkUri, v);
+        getContentResolver().notifyChange(parkUri, null);
 
-                Uri plugUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
-                getContentResolver().delete(plugUri, RoadProProvider.FIELD_ID + "!=0", null);
-                ArrayList<ContentValues> plugValues = DummyStationSource.getPlugList();
-                for (ContentValues v : plugValues)
-                    getContentResolver().insert(plugUri, v);
+        Uri plugUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_PLUG_STATION);
+        getContentResolver().delete(plugUri, RoadProProvider.FIELD_ID + "!=0", null);
+        ArrayList<ContentValues> plugValues = DummyStationSource.getPlugList();
+        for (ContentValues v : plugValues)
+            getContentResolver().insert(plugUri, v);
+        getContentResolver().notifyChange(plugUri, null);
 
-                Uri carUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
-                getContentResolver().delete(carUri, RoadProProvider.FIELD_ID + "!=0", null);
-                ArrayList<ContentValues> carValues = DummyCarSource.getCarData();
-                for (ContentValues v : carValues)
-                    getContentResolver().insert(carUri, v);
-            }
-        });
+        Uri carUri = RoadProProvider.getProviderUri(getString(R.string.auth_provider_roadpro), RoadProProvider.TABLE_CAR);
+        getContentResolver().delete(carUri, RoadProProvider.FIELD_ID + "!=0", null);
+        ArrayList<ContentValues> carValues = DummyCarSource.getCarData();
+        for (ContentValues v : carValues)
+            getContentResolver().insert(carUri, v);
+        getContentResolver().notifyChange(carUri, null);
     }
 }

@@ -36,7 +36,7 @@ public class ParkAdapter extends AbstractRecyclerCursorAdapter {
 
         String url = cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_PHOTO));
         if (url != null && url.length() > 0)
-            Picasso.with(m_context).load(url).into(vh.mImageView);
+            Picasso.with(m_context).load(url).placeholder(R.drawable.oval_rank).into(vh.mImageView);
 
         vh.mName.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_CAR_STATION_NAME)));
         // vh.mID.setText(cursor.getString(cursor.getColumnIndex(RoadProProvider.FIELD_ID)));

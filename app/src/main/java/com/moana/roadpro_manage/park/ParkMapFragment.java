@@ -62,8 +62,8 @@ public class ParkMapFragment extends BroadcastMap implements OnMapReadyCallback 
     }
 
     private void moveToDummyPosition() {
-        LatLng location = new LatLng(23.6000634, 120.982024);
-        moveCamera(7.62f, location);
+        LatLng location = new LatLng(22.6381039, 120.3032935);
+        moveCamera(11.22f, location);
     }
 
     @Override
